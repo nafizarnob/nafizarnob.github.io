@@ -37,7 +37,11 @@ export default function ProjectsViewer({ onOpenApp }: AppComponentProps) {
     >
       {/* Header */}
       <div className="flex items-start gap-4 mb-5">
-        <span className="text-5xl">{project.emoji}</span>
+        {project.logo ? (
+          <img src={project.logo} alt={project.title} className="w-14 h-14 rounded-xl object-cover shrink-0" />
+        ) : (
+          <span className="text-5xl">{project.emoji}</span>
+        )}
         <div className="flex-1">
           <h2 className="text-xl font-bold text-white mb-1.5">{project.title}</h2>
           <span

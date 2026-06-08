@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Wallpaper from '@/components/Desktop/Wallpaper';
+import StickyNotes from '@/components/Desktop/StickyNotes';
 import ProjectsViewer from '@/components/Apps/ProjectsViewer/ProjectsViewer';
 import AboutApp from '@/components/Apps/AboutApp/AboutApp';
 import TerminalApp from '@/components/Apps/TerminalApp/TerminalApp';
@@ -235,6 +236,9 @@ export default function MobileOS() {
           {APPS.map((app) => (
             <AppIcon key={app.id} app={app} onOpen={() => handleOpen(app)} />
           ))}
+        </div>
+        <div className="mt-8 flex flex-col items-center">
+          <StickyNotes inline />
         </div>
       </div>
 

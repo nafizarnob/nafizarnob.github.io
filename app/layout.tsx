@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Nafiz Arnob — Portfolio OS",
   description: "Product Consultant & Developer — AML/KYC, Next.js, TypeScript",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

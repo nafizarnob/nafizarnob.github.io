@@ -28,6 +28,7 @@ export interface Project {
   websiteUrl?: string;
   category: 'personal' | 'enterprise';
   emoji: string;
+  logo?: string;
   highlights: string[];
 }
 

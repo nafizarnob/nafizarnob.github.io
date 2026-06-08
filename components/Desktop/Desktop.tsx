@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { desktopIcons } from '@/data/projects';
 import { AppType, DesktopIcon } from '@/types';
+import StickyNotes from '@/components/Desktop/StickyNotes';
 
 function IconContent({ icon }: { icon: DesktopIcon }) {
   if (icon.id === 'linkedin') {
@@ -91,6 +92,9 @@ export default function Desktop({ onOpenApp }: DesktopProps) {
           </motion.div>
         ))}
       </div>
+
+      {/* Sticky notes */}
+      <StickyNotes />
 
       {/* Tip */}
       <motion.div
