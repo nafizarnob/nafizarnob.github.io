@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Nafiz Arnob — LinkedIn Profile</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f3f2ef;
+    color: #000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  a { color: #0a66c2; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .navbar {
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 52px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 12px;
+  }
+  .navbar-logo {
+    width: 34px; height: 34px;
+    background: #0a66c2;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 900; font-size: 20px; letter-spacing: -1px;
+    flex-shrink: 0;
+  }
+  .navbar-title { font-size: 13px; color: #666; font-style: italic; }
+  .page-wrap {
+    max-width: 1128px;
+    margin: 24px auto;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 16px;
+    align-items: start;
+  }
+  .card { background: #fff; border-radius: 8px; border: 1px solid rgba(0,0,0,.08); overflow: hidden; margin-bottom: 8px; }
+  .top-card-banner { height: 96px; background: linear-gradient(135deg, #0a66c2 0%, #004182 60%, #1a1a2e 100%); }
+  .top-card-avatar-row { padding: 0 24px; display: flex; align-items: flex-end; gap: 16px; margin-top: -40px; margin-bottom: 12px; }
+  .avatar {
+    width: 120px; height: 120px; border-radius: 50%; border: 4px solid #fff;
+    background: linear-gradient(135deg, #0a66c2, #00b894);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 42px; font-weight: 700; color: #fff; flex-shrink: 0;
+  }
+  .top-card-info { padding: 0 24px 20px; }
+  .profile-name { font-size: 22px; font-weight: 600; color: #000; margin-bottom: 4px; }
+  .profile-headline { font-size: 14px; color: #333; margin-bottom: 8px; line-height: 1.4; }
+  .profile-meta { font-size: 13px; color: #666; margin-bottom: 12px; }
+  .profile-meta span + span::before { content: " · "; }
+  .open-profile-btn {
+    display: inline-block; background: #0a66c2; color: #fff !important;
+    font-size: 14px; font-weight: 600; padding: 8px 20px; border-radius: 20px; text-decoration: none !important;
+  }
+  .open-profile-btn:hover { background: #004182; }
+  .section-title { font-size: 18px; font-weight: 600; color: #000; padding: 20px 24px 12px; border-bottom: 1px solid #f3f2ef; }
+  .about-text { padding: 16px 24px 24px; font-size: 14px; color: #333; line-height: 1.6; }
+  .exp-item { display: flex; gap: 16px; padding: 16px 24px; border-bottom: 1px solid #f3f2ef; }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-logo { width: 48px; height: 48px; border-radius: 4px; flex-shrink: 0; background: #0a66c2; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: #fff; }
+  .exp-content { flex: 1; min-width: 0; }
+  .exp-title { font-size: 14px; font-weight: 600; color: #000; }
+  .exp-company { font-size: 13px; color: #333; margin-top: 1px; }
+  .exp-meta { font-size: 12px; color: #666; margin-top: 2px; }
+  .exp-client { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; padding: 4px 10px; background: #e8f0fe; color: #1a56db; border-radius: 6px; font-size: 12px; font-weight: 600; }
+  .exp-desc { font-size: 13px; color: #444; margin-top: 8px; line-height: 1.55; }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .exp-tag { font-size: 12px; color: #0a66c2; background: #e8f0fe; padding: 2px 10px; border-radius: 12px; }
+  .edu-item { display: flex; gap: 16px; padding: 16px 24px; }
+  .edu-logo { width: 48px; height: 48px; border-radius: 4px; flex-shrink: 0; background: #00467f; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: #fff; }
+  .edu-content { flex: 1; }
+  .edu-school { font-size: 14px; font-weight: 600; color: #000; }
+  .edu-degree { font-size: 13px; color: #333; margin-top: 2px; }
+  .edu-meta { font-size: 12px; color: #666; margin-top: 2px; }
+  .edu-award { margin-top: 10px; padding: 8px 12px; background: #fff8e1; border-left: 3px solid #f4b400; border-radius: 0 4px 4px 0; font-size: 13px; color: #555; }
+  .skills-grid { padding: 16px 24px 24px; display: flex; flex-direction: column; gap: 16px; }
+  .skill-group-title { font-size: 12px; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-pill { font-size: 13px; color: #444; background: #f3f2ef; border: 1px solid #e0dfdc; padding: 4px 14px; border-radius: 16px; }
+  .skill-pill.featured { color: #0a66c2; background: #e8f0fe; border-color: #c5d8f8; font-weight: 600; }
+  .cert-item { display: flex; gap: 14px; padding: 14px 24px; border-bottom: 1px solid #f3f2ef; align-items: flex-start; }
+  .cert-item:last-child { border-bottom: none; }
+  .cert-icon { width: 40px; height: 40px; border-radius: 4px; background: #0a66c2; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .cert-title { font-size: 14px; font-weight: 600; color: #000; }
+  .cert-issuer { font-size: 13px; color: #666; margin-top: 2px; }
+  .sidebar-card { background: #fff; border-radius: 8px; border: 1px solid rgba(0,0,0,.08); overflow: hidden; margin-bottom: 8px; }
+  .sidebar-section { padding: 16px; }
+  .sidebar-title { font-size: 14px; font-weight: 700; color: #000; margin-bottom: 12px; }
+  .sidebar-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 13px; color: #444; }
+  .sidebar-icon { font-size: 16px; flex-shrink: 0; }
+  .sidebar-cta { display: block; background: #0a66c2; color: #fff !important; text-align: center; padding: 10px; font-size: 14px; font-weight: 600; border-radius: 6px; margin: 0 16px 12px; text-decoration: none !important; }
+  .sidebar-cta:hover { background: #004182; }
+  .sidebar-open-notice { font-size: 11px; color: #888; text-align: center; padding-bottom: 12px; }
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-logo">in</div>
+  <span class="navbar-title">Nafiz Arnob — Saved Profile</span>
+</nav>
+<div class="page-wrap">
+  <main>
+    <div class="card">
+      <div class="top-card-banner"></div>
+      <div class="top-card-avatar-row">
+        <div class="avatar">NA</div>
+      </div>
+      <div class="top-card-info">
+        <div class="profile-name">Md Nafiz Arnob</div>
+        <div class="profile-headline">Product Consultant | AML/KYC &amp; CLM Implementation | Turning Compliance Complexity into Scalable Solutions with AI &amp; Automation</div>
+        <div class="profile-meta">
+          <span>Sydney, New South Wales, Australia</span>
+          <span>Fenergo</span>
+          <span>University of Technology Sydney</span>
+        </div>
+        <a class="open-profile-btn" href="https://www.linkedin.com/in/mdarn/" target="_blank" rel="noopener">View on LinkedIn &#x2197;</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-title">About</div>
+      <div class="about-text">
+        <p>I'm a Fenergo-specialised Product Consultant with over 3 years of hands-on experience implementing Fenergo's Client Lifecycle Management (CLM) platform for major financial institutions across Australia.</p>
+        <br>
+        <p>My work sits at the intersection of compliance technology and intelligent automation — I translate complex AML/KYC regulatory requirements into scalable, production-ready solutions that meaningfully reduce risk and operational overhead for some of Australia's largest banks.</p>
+        <br>
+        <p>At ANZ, I led product configuration and automation for the SkyC project, streamlining onboarding workflows and document verification across multiple client segments. At Macquarie Group, I'm currently embedded in the ICO program, owning end-to-end delivery of CLM automation modules.</p>
+        <br>
+        <p>Beyond consulting, I build side projects to sharpen my full-stack skills — from a lost-and-found pet platform to consumer-facing web experiences. I'm drawn to products where technology meets real human outcomes.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-title">Experience</div>
+      <div class="exp-item">
+        <div class="exp-logo">F</div>
+        <div class="exp-content">
+          <div class="exp-title">Product Consultant</div>
+          <div class="exp-company">Fenergo &middot; Full-time</div>
+          <div class="exp-meta">Apr 2024 &ndash; Present &middot; Sydney, NSW (Hybrid)</div>
+          <div class="exp-client">📌 Client: Macquarie Group &mdash; ICO Program (27 jurisdictions)</div>
+          <div class="exp-desc">Embedded in Macquarie Group's ICO program as a senior CLM implementation lead. Own configuration, automation, and delivery of AML/KYC workflows across institutional client segments. Drive 50% faster document processing and 95% automated screening resolution through intelligent rule-engine configuration and Python-based automation tooling.</div>
+          <div class="exp-tags">
+            <span class="exp-tag">Fenergo CLM</span>
+            <span class="exp-tag">AML/KYC</span>
+            <span class="exp-tag">Macquarie Group</span>
+            <span class="exp-tag">Python</span>
+            <span class="exp-tag">Automation</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-logo">F</div>
+        <div class="exp-content">
+          <div class="exp-title">Implementation Consultant</div>
+          <div class="exp-company">Fenergo &middot; Full-time</div>
+          <div class="exp-meta">Sep 2021 &ndash; Apr 2024 &middot; 2 yrs 8 mos &middot; Sydney, NSW</div>
+          <div class="exp-client">📌 Client: ANZ Bank &mdash; SkyC Digital Onboarding</div>
+          <div class="exp-desc">Led product configuration and delivery for ANZ's SkyC digital onboarding project. Designed and built CLM automation modules across document collection, entity screening, and risk assessment flows. Collaborated with ANZ's compliance and technology teams to translate regulatory requirements into scalable platform solutions.</div>
+          <div class="exp-tags">
+            <span class="exp-tag">Fenergo CLM</span>
+            <span class="exp-tag">ANZ Bank</span>
+            <span class="exp-tag">Financial Crime Compliance</span>
+            <span class="exp-tag">Client Onboarding</span>
+            <span class="exp-tag">Rule Engine</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-title">Education</div>
+      <div class="edu-item">
+        <div class="edu-logo">UTS</div>
+        <div class="edu-content">
+          <div class="edu-school">University of Technology Sydney</div>
+          <div class="edu-degree">Bachelor of Science &mdash; Information Technology (Interaction Design)</div>
+          <div class="edu-meta">2018 &ndash; 2021</div>
+          <div class="edu-award">&#127942; Best FEIT Digital Prototype &mdash; Faculty of Engineering and Information Technology</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-title">Licenses &amp; Certifications</div>
+      <div class="cert-item"><div class="cert-icon">&#127885;</div><div><div class="cert-title">Fenergo Certified Practitioner</div><div class="cert-issuer">Fenergo</div></div></div>
+      <div class="cert-item"><div class="cert-icon">&#9729;&#65039;</div><div><div class="cert-title">AWS Certified Cloud Practitioner</div><div class="cert-issuer">Amazon Web Services</div></div></div>
+      <div class="cert-item"><div class="cert-icon">&#128311;</div><div><div class="cert-title">Microsoft Azure Fundamentals (AZ-900)</div><div class="cert-issuer">Microsoft</div></div></div>
+      <div class="cert-item"><div class="cert-icon">&#128013;</div><div><div class="cert-title">Python for Data Science and Machine Learning</div><div class="cert-issuer">Udemy</div></div></div>
+      <div class="cert-item"><div class="cert-icon">&#128202;</div><div><div class="cert-title">Financial Crime Compliance &mdash; AML Fundamentals</div><div class="cert-issuer">ACAMS</div></div></div>
+      <div class="cert-item"><div class="cert-icon">&#9883;&#65039;</div><div><div class="cert-title">React &amp; TypeScript &mdash; The Complete Developer Guide</div><div class="cert-issuer">Udemy</div></div></div>
+      <div class="cert-item"><div class="cert-icon">&#128451;&#65039;</div><div><div class="cert-title">PostgreSQL &amp; Prisma &mdash; Backend Development</div><div class="cert-issuer">Udemy</div></div></div>
+    </div>
+    <div class="card">
+      <div class="section-title">Skills</div>
+      <div class="skills-grid">
+        <div>
+          <div class="skill-group-title">Domain Expertise</div>
+          <div class="skill-pills">
+            <span class="skill-pill featured">Fenergo CLM</span>
+            <span class="skill-pill featured">AML / KYC</span>
+            <span class="skill-pill">Financial Crime Compliance</span>
+            <span class="skill-pill">Client Lifecycle Management</span>
+            <span class="skill-pill">Know Your Customer (KYC)</span>
+            <span class="skill-pill">Anti-Money Laundering (AML)</span>
+            <span class="skill-pill">Client Onboarding</span>
+            <span class="skill-pill">Regulatory Compliance</span>
+            <span class="skill-pill">Risk Assessment</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Engineering</div>
+          <div class="skill-pills">
+            <span class="skill-pill featured">Python</span>
+            <span class="skill-pill featured">Next.js</span>
+            <span class="skill-pill">TypeScript</span>
+            <span class="skill-pill">React</span>
+            <span class="skill-pill">Tailwind CSS</span>
+            <span class="skill-pill">PostgreSQL</span>
+            <span class="skill-pill">Prisma ORM</span>
+            <span class="skill-pill">REST APIs</span>
+            <span class="skill-pill">AWS</span>
+            <span class="skill-pill">Azure</span>
+            <span class="skill-pill">Automation</span>
+            <span class="skill-pill">SQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside>
+    <div class="sidebar-card">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Contact</div>
+        <div class="sidebar-item"><span class="sidebar-icon">&#128231;</span><a href="mailto:mdnafizakter@gmail.com">mdnafizakter@gmail.com</a></div>
+        <div class="sidebar-item"><span class="sidebar-icon">&#128205;</span><span>Sydney, NSW, Australia</span></div>
+        <div class="sidebar-item"><span class="sidebar-icon">&#128188;</span><span>Open to opportunities</span></div>
+      </div>
+      <a class="sidebar-cta" href="https://www.linkedin.com/in/mdarn/" target="_blank" rel="noopener">View Full Profile &#x2197;</a>
+      <div class="sidebar-open-notice">Opens linkedin.com in a new tab</div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Projects</div>
+        <div class="sidebar-item">
+          <span class="sidebar-icon">&#127906;</span>
+          <div>
+            <div style="font-weight:600;color:#000">Shopnopuri</div>
+            <div style="font-size:12px;color:#666">Amusement park booking platform</div>
+            <a href="https://shopnopuri-website.vercel.app/" target="_blank" style="font-size:12px">Visit site &#x2197;</a>
+          </div>
+        </div>
+        <div class="sidebar-item">
+          <span class="sidebar-icon">&#128062;</span>
+          <div>
+            <div style="font-weight:600;color:#000">PawFound</div>
+            <div style="font-size:12px;color:#666">Lost &amp; found pet platform</div>
+            <a href="https://pawfound.vercel.app" target="_blank" style="font-size:12px">Visit site &#x2197;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Education</div>
+        <div style="font-size:13px;color:#333;font-weight:600">University of Technology Sydney</div>
+        <div style="font-size:12px;color:#666;margin-top:2px">BSc Information Technology<br>Interaction Design &middot; 2018&ndash;2021</div>
+        <div style="font-size:12px;color:#c8860a;margin-top:6px;font-weight:600">&#127942; Best FEIT Digital Prototype</div>
+      </div>
+    </div>
+  </aside>
+</div>
+</body>
+</html>
