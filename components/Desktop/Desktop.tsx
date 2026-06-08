@@ -7,6 +7,16 @@ import { AppType, DesktopIcon } from '@/types';
 import StickyNotes from '@/components/Desktop/StickyNotes';
 
 function IconContent({ icon }: { icon: DesktopIcon }) {
+  if (icon.id === 'about') {
+    return (
+      <img
+        src="/avatar.jpg"
+        alt="About Me"
+        className="w-full h-full object-cover"
+        style={{ borderRadius: '16px' }}
+      />
+    );
+  }
   if (icon.id === 'linkedin') {
     return (
       <div

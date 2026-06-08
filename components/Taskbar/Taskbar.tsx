@@ -69,10 +69,10 @@ export default function Taskbar({ windows, onOpenApp, onFocusWindow, onMinimizeW
           </div>
           <div className="p-2 border-t border-white/5">
             <a
-              href="mailto:jagerotiai@gmail.com"
+              href="mailto:mdnafizakter@gmail.com"
               className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-400 hover:bg-white/5 transition-all"
             >
-              ✉️ jagerotiai@gmail.com
+              ✉️ mdnafizakter@gmail.com
             </a>
           </div>
         </motion.div>
