@@ -124,7 +124,7 @@ function StatusBar({ time }: { time: string }) {
       className="fixed top-0 left-0 right-0 z-20 flex items-center justify-between"
       style={{ height: 50, paddingLeft: 24, paddingRight: 20, paddingTop: 10 }}
     >
-      <span className="text-white font-semibold text-[15px]" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
+      <span className="text-white font-semibold text-[15px]" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)', fontFeatureSettings: '"tnum"', letterSpacing: '0.02em' }}>
         {time}
       </span>
       <div className="flex items-center gap-[5px]">

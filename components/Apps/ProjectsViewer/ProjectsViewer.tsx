@@ -78,8 +78,8 @@ export default function ProjectsViewer({ onOpenApp }: AppComponentProps) {
           {project.tech.map((t) => (
             <span
               key={t}
-              className="text-xs px-2.5 py-1 rounded-md font-mono"
-              style={{ background: '#2a2b3d', color: '#7aa2f7', border: '1px solid #3a3b52' }}
+              className="text-xs px-2.5 py-1 rounded-md"
+              style={{ background: '#2a2b3d', color: '#7aa2f7', border: '1px solid #3a3b52', fontFamily: "'JetBrains Mono', monospace", fontSize: '11px' }}
             >
               {t}
             </span>

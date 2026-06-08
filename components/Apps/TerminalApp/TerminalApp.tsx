@@ -111,8 +111,8 @@ export default function TerminalApp(_props: AppComponentProps) {
 
   return (
     <div
-      className="h-full flex flex-col font-mono text-sm cursor-text p-4 overflow-hidden"
-      style={{ background: '#0d0e16', color: '#c0caf5' }}
+      className="h-full flex flex-col text-sm cursor-text p-4 overflow-hidden"
+      style={{ background: '#0d0e16', color: '#c0caf5', fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
       onClick={() => inputRef.current?.focus()}
     >
       <div className="flex-1 overflow-y-auto space-y-0.5">

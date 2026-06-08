@@ -53,19 +53,25 @@ export default function AboutApp({ onOpenApp }: AppComponentProps) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 + 0.15 }}
-                className="rounded-xl p-4"
+                className="rounded-xl p-4 relative overflow-hidden"
                 style={{ background: '#24253a', border: '1px solid #2e2f45' }}
               >
-                <p className="text-2xl font-bold" style={{ color: h.color }}>{h.stat}</p>
+                <div
+                  className="absolute top-0 left-0 right-0 h-[2px]"
+                  style={{ background: `linear-gradient(90deg, transparent, ${h.color}40, ${h.color}, ${h.color}40, transparent)` }}
+                />
+                <p className="text-2xl font-bold" style={{ color: h.color, fontFamily: "'JetBrains Mono', monospace" }}>{h.stat}</p>
                 <p className="text-xs text-gray-400 mt-1 leading-snug">{h.label}</p>
               </motion.div>
             ))}
           </div>
 
           {/* CTA */}
-          <button
+          <motion.button
             onClick={() => onOpenApp?.('projects')}
-            className="w-full mb-8 py-3 rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2"
+            whileHover={{ scale: 1.02, boxShadow: '0 0 24px rgba(122,162,247,0.25)' }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full mb-8 py-3 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2"
             style={{
               background: 'linear-gradient(135deg, #1d4ed8, #7c3aed)',
               color: 'white',
@@ -73,7 +79,7 @@ export default function AboutApp({ onOpenApp }: AppComponentProps) {
             }}
           >
             📁 See What I Built — Projects
-          </button>
+          </motion.button>
 
           {/* Snapshot cards */}
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Quick Snapshot</p>

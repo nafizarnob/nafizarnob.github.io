@@ -35,12 +35,18 @@ export default function Home() {
   }
 
   if (isMobile) {
-    return <MobileOS />;
+    return (
+      <>
+        <MobileOS />
+        <div className="noise-overlay" />
+      </>
+    );
   }
 
   return (
     <div className="fixed inset-0 overflow-hidden">
       <Wallpaper />
+      <div className="noise-overlay" />
 
       {/* Desktop area (above taskbar) */}
       <div ref={desktopRef} className="absolute inset-0 bottom-12">

@@ -86,14 +86,19 @@ export default function Taskbar({ windows, onOpenApp, onFocusWindow, onMinimizeW
       >
         {/* Start button */}
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.92 }}
           onClick={(e) => { e.stopPropagation(); setStartOpen((v) => !v); }}
-          className={`w-8 h-8 rounded-lg flex items-center justify-center text-lg transition-all ${
-            startOpen ? 'bg-blue-600/40' : 'hover:bg-white/10'
+          className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all ${
+            startOpen ? 'bg-blue-600/40 shadow-[0_0_12px_rgba(96,165,250,0.25)]' : 'hover:bg-white/10'
           }`}
         >
-          ⬡
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <rect x="1" y="1" width="7" height="7" rx="1.5" fill={startOpen ? '#60a5fa' : '#7aa2f7'} opacity="0.9"/>
+            <rect x="10" y="1" width="7" height="7" rx="1.5" fill={startOpen ? '#60a5fa' : '#7aa2f7'} opacity="0.6"/>
+            <rect x="1" y="10" width="7" height="7" rx="1.5" fill={startOpen ? '#60a5fa' : '#7aa2f7'} opacity="0.6"/>
+            <rect x="10" y="10" width="7" height="7" rx="1.5" fill={startOpen ? '#60a5fa' : '#7aa2f7'} opacity="0.35"/>
+          </svg>
         </motion.button>
 
         <div className="w-px h-6 bg-white/10 mx-1" />
