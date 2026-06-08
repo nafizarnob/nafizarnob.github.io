@@ -25,6 +25,8 @@ export function useWindowManager() {
   const [windows, setWindows] = useState<WindowState[]>([]);
 
   const openWindow = useCallback((app: AppType, appProps?: Record<string, string>) => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
     setWindows((prev) => {
       // For browser windows with a URL, always open a new one
       if (app === 'browser' && appProps?.url) {
@@ -37,7 +39,7 @@ export function useWindowManager() {
             title: appProps.title ?? 'Browser',
             app,
             isMinimized: false,
-            isMaximized: false,
+            isMaximized: isMobile,
             isFocused: true,
             position: { x: 150 + offset, y: 50 + offset },
             size,
@@ -66,7 +68,7 @@ export function useWindowManager() {
           title: APP_TITLES[app],
           app,
           isMinimized: false,
-          isMaximized: false,
+          isMaximized: isMobile,
           isFocused: true,
           position: { x: 120 + offset, y: 60 + offset },
           size,

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { desktopIcons } from '@/data/projects';
 import { AppType, DesktopIcon } from '@/types';
@@ -26,6 +26,7 @@ interface DesktopProps {
 export default function Desktop({ onOpenApp }: DesktopProps) {
   const [selected, setSelected] = useState<string | null>(null);
   const [time, setTime] = useState('');
+  const lastTap = useRef<Record<string, number>>({});
 
   useEffect(() => {
     const update = () => {
@@ -58,11 +59,15 @@ export default function Desktop({ onOpenApp }: DesktopProps) {
             className="flex flex-col items-center gap-1.5 cursor-pointer group w-20"
             onClick={(e) => {
               e.stopPropagation();
-              setSelected(icon.id);
-            }}
-            onDoubleClick={(e) => {
-              e.stopPropagation();
-              onOpenApp(icon.app, icon.appProps);
+              const now = Date.now();
+              const last = lastTap.current[icon.id] ?? 0;
+              if (now - last < 400) {
+                onOpenApp(icon.app, icon.appProps);
+                lastTap.current[icon.id] = 0;
+              } else {
+                setSelected(icon.id);
+                lastTap.current[icon.id] = now;
+              }
             }}
           >
             <div
@@ -94,7 +99,7 @@ export default function Desktop({ onOpenApp }: DesktopProps) {
         transition={{ delay: 1.2 }}
         className="absolute bottom-16 right-6 text-xs text-white/30 text-right"
       >
-        Double-click to open
+        Double-tap or click to open
       </motion.div>
     </div>
   );

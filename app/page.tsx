@@ -7,7 +7,6 @@ import Desktop from '@/components/Desktop/Desktop';
 import Wallpaper from '@/components/Desktop/Wallpaper';
 import Taskbar from '@/components/Taskbar/Taskbar';
 import Window from '@/components/Window/Window';
-import MobilePortfolio from '@/components/MobilePortfolio/MobilePortfolio';
 
 export default function Home() {
   const {
@@ -24,14 +23,7 @@ export default function Home() {
   const desktopRef = useRef<HTMLDivElement>(null);
 
   return (
-    <>
-    {/* Mobile layout */}
-    <div className="md:hidden">
-      <MobilePortfolio />
-    </div>
-
-    {/* Desktop OS */}
-    <div className="hidden md:block fixed inset-0 overflow-hidden">
+    <div className="fixed inset-0 overflow-hidden">
       <Wallpaper />
 
       {/* Desktop area (above taskbar) */}
@@ -66,6 +58,5 @@ export default function Home() {
         onMinimizeWindow={minimizeWindow}
       />
     </div>
-    </>
   );
 }
