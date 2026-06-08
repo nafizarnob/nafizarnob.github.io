@@ -7,11 +7,17 @@
 html,
 body {
   height: 100%;
-  overflow: hidden;
   background: #060810;
   color: #c0caf5;
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 768px) {
+  html,
+  body {
+    overflow: hidden;
+  }
 }
 
 /* Scrollbar styling */
