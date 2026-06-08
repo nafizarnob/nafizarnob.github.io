@@ -21,12 +21,12 @@ export default function AboutApp({ onOpenApp }: AppComponentProps) {
         transition={{ duration: 0.3 }}
       >
         <div className="flex items-center gap-4 mb-8">
-          <div
-            className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl font-bold"
-            style={{ background: 'linear-gradient(135deg, #7aa2f7, #bb9af7)', color: '#1a1b26' }}
-          >
-            N
-          </div>
+          <img
+            src="/avatar.jpg"
+            alt="Nafiz Arnob"
+            className="w-16 h-16 rounded-2xl object-cover"
+            style={{ border: '2px solid rgba(122,162,247,0.3)' }}
+          />
           <div>
             <h1 className="text-2xl font-bold text-white">Md Nafiz Arnob</h1>
             <p className="text-blue-400 text-sm mt-0.5">Product Consultant & Developer</p>
@@ -63,7 +63,7 @@ export default function AboutApp({ onOpenApp }: AppComponentProps) {
 
         <div className="mt-8 pt-6 border-t border-white/5 flex gap-3">
           <a
-            href="mailto:jagerotiai@gmail.com"
+            href="mailto:mdnafizakter@gmail.com"
             className="flex-1 py-2.5 rounded-lg text-sm font-medium text-center transition-all"
             style={{ background: '#2a2b3d', color: '#7aa2f7', border: '1px solid #3a3b52' }}
           >
