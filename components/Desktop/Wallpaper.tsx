@@ -29,9 +29,23 @@ export default function Wallpaper() {
     }));
 
     let t = 0;
+    const baseHue = { current: 210 };
+    const targetHue = { current: 210 };
+
+    const handleClick = () => {
+      targetHue.current = Math.random() * 360;
+    };
+    window.addEventListener('click', handleClick);
 
     const draw = () => {
       t += 0.003;
+
+      // Smoothly lerp hue, handling 360° wrap-around
+      let diff = targetHue.current - baseHue.current;
+      if (diff > 180) diff -= 360;
+      if (diff < -180) diff += 360;
+      baseHue.current = ((baseHue.current + diff * 0.018) + 360) % 360;
+
       const W = canvas.width;
       const H = canvas.height;
       const cw = W / COLS;
@@ -49,7 +63,7 @@ export default function Wallpaper() {
         const pa = pos[a], pb = pos[b], pd = pos[d];
         const cx = (pa.x + pb.x + pd.x) / 3 / W;
         const cy = (pa.y + pb.y + pd.y) / 3 / H;
-        const hue = 210 + cx * 65 + Math.sin(t * 0.4 + cy * Math.PI) * 20;
+        const hue = baseHue.current + cx * 65 + Math.sin(t * 0.4 + cy * Math.PI) * 20;
         const lum = 7 + cy * 11 + Math.sin(t * 0.55 + cx * Math.PI * 2) * 3;
         const sat = 55 + Math.cos(t * 0.45 + cx * Math.PI) * 22;
         ctx.beginPath();
@@ -82,6 +96,7 @@ export default function Wallpaper() {
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', resize);
+      window.removeEventListener('click', handleClick);
     };
   }, []);
 
