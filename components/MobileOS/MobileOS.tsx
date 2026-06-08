@@ -10,6 +10,38 @@ import BrowserApp from '@/components/Apps/BrowserApp/BrowserApp';
 import FlappyApp from '@/components/Apps/FlappyApp/FlappyApp';
 import { AppType } from '@/types';
 
+// ── SVG Icons (cross-platform, no emoji rendering issues) ───────
+const FolderIcon = () => (
+  <svg width="30" height="26" viewBox="0 0 30 26" fill="none">
+    <path d="M2 6C2 4.34 3.34 3 5 3H12L15 6H25C26.66 6 28 7.34 28 9V21C28 22.66 26.66 24 25 24H5C3.34 24 2 22.66 2 21V6Z" fill="#FFD43B"/>
+    <path d="M2 10H28V21C28 22.66 26.66 24 25 24H5C3.34 24 2 22.66 2 21V10Z" fill="#FCC419"/>
+  </svg>
+);
+
+const LinkedInIcon = () => (
+  <span style={{ fontFamily: 'Georgia, serif', fontWeight: 700, fontSize: 24, color: '#fff', letterSpacing: -1 }}>
+    in
+  </span>
+);
+
+const TermIcon = () => (
+  <svg width="28" height="22" viewBox="0 0 28 22" fill="none">
+    <rect x="1" y="1" width="26" height="20" rx="3" fill="#0D1117" stroke="#30363D" strokeWidth="1.5"/>
+    <path d="M6 7L10 11L6 15" stroke="#3FB950" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M13 15H20" stroke="#8B949E" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
+const BirdIcon = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+    <circle cx="14" cy="14" r="12" fill="#FDE047"/>
+    <circle cx="17" cy="10" r="2.5" fill="#1a1a2e"/>
+    <circle cx="17.5" cy="9.2" r="0.8" fill="#fff"/>
+    <path d="M20 14C22 13 24 14 24 14L20 15Z" fill="#F97316"/>
+    <path d="M8 18C10 22 18 22 20 18" stroke="#1a1a2e" strokeWidth="1" fill="none"/>
+  </svg>
+);
+
 // ── App registry ────────────────────────────────────────────────
 interface MobileApp {
   id: string;
@@ -26,14 +58,20 @@ const APPS: MobileApp[] = [
     label: 'Projects',
     appType: 'projects',
     gradient: 'linear-gradient(145deg, #1d4ed8, #60a5fa)',
-    icon: '📁',
+    icon: <FolderIcon />,
   },
   {
     id: 'about',
-    label: 'About',
+    label: 'About Me',
     appType: 'about',
     gradient: 'linear-gradient(145deg, #7c3aed, #c084fc)',
-    icon: '👤',
+    icon: (
+      <img
+        src="/avatar.jpg"
+        alt="About Me"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '22%' }}
+      />
+    ),
   },
   {
     id: 'linkedin',
@@ -41,25 +79,21 @@ const APPS: MobileApp[] = [
     appType: 'browser',
     appProps: { url: '/linkedin-profile.html', title: 'LinkedIn — Nafiz Arnob' },
     gradient: 'linear-gradient(145deg, #004e7c, #0a66c2)',
-    icon: (
-      <span style={{ fontFamily: 'Georgia, serif', fontWeight: 700, fontSize: 22, color: '#fff', letterSpacing: -1 }}>
-        in
-      </span>
-    ),
+    icon: <LinkedInIcon />,
   },
   {
     id: 'terminal',
     label: 'Terminal',
     appType: 'terminal',
     gradient: 'linear-gradient(145deg, #0f2417, #166534)',
-    icon: '💻',
+    icon: <TermIcon />,
   },
   {
     id: 'flappy',
     label: 'Flappy Bird',
     appType: 'flappy',
     gradient: 'linear-gradient(145deg, #0369a1, #38bdf8)',
-    icon: '🐦',
+    icon: <BirdIcon />,
   },
 ];
 
@@ -75,7 +109,7 @@ const APP_COMPONENTS: Record<AppType, React.ComponentType<any>> = {
 
 const APP_TITLE: Record<string, string> = {
   projects: 'Projects',
-  about: 'About Nafiz',
+  about: 'About Me',
   linkedin: 'LinkedIn',
   terminal: 'Terminal',
   flappy: 'Flappy Bird',
@@ -93,27 +127,19 @@ function StatusBar({ time }: { time: string }) {
         {time}
       </span>
       <div className="flex items-center gap-[5px]">
-        {/* Signal bars */}
         <svg width="18" height="13" viewBox="0 0 18 13" fill="white" opacity={0.9}>
           <rect x="0" y="9" width="3" height="4" rx="0.8"/>
           <rect x="5" y="6" width="3" height="7" rx="0.8"/>
           <rect x="10" y="3" width="3" height="10" rx="0.8"/>
           <rect x="15" y="0" width="3" height="13" rx="0.8"/>
         </svg>
-        {/* WiFi */}
         <svg width="16" height="12" viewBox="0 0 16 12" fill="none" opacity={0.9}>
           <circle cx="8" cy="11" r="1.4" fill="white"/>
           <path d="M4.2 7.5A5.3 5.3 0 018 6a5.3 5.3 0 013.8 1.5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
           <path d="M1.5 4.5A9.1 9.1 0 018 2.5a9.1 9.1 0 016.5 2" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
         </svg>
-        {/* Battery */}
         <div className="flex items-center">
-          <div
-            style={{
-              width: 24, height: 12, border: '1.5px solid rgba(255,255,255,0.85)',
-              borderRadius: 3.5, position: 'relative', overflow: 'hidden',
-            }}
-          >
+          <div style={{ width: 24, height: 12, border: '1.5px solid rgba(255,255,255,0.85)', borderRadius: 3.5, position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', inset: 1.5, right: '15%', background: 'white', borderRadius: 1.5 }} />
           </div>
           <div style={{ width: 2, height: 5, background: 'rgba(255,255,255,0.7)', borderRadius: '0 1px 1px 0', marginLeft: 1 }} />
@@ -125,6 +151,7 @@ function StatusBar({ time }: { time: string }) {
 
 function AppIcon({ app, onOpen, small = false }: { app: MobileApp; onOpen: () => void; small?: boolean }) {
   const size = small ? 52 : 60;
+  const isPhoto = app.id === 'about';
   return (
     <div className="flex flex-col items-center" style={{ gap: 6 }} onClick={onOpen}>
       <motion.div
@@ -134,18 +161,15 @@ function AppIcon({ app, onOpen, small = false }: { app: MobileApp; onOpen: () =>
           width: size,
           height: size,
           borderRadius: '22%',
-          background: app.gradient,
+          background: isPhoto ? 'transparent' : app.gradient,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           boxShadow: '0 4px 18px rgba(0,0,0,0.45)',
+          overflow: 'hidden',
         }}
       >
-        {typeof app.icon === 'string' ? (
-          <span style={{ fontSize: small ? 22 : 28 }}>{app.icon}</span>
-        ) : (
-          app.icon
-        )}
+        {app.icon}
       </motion.div>
       {!small && (
         <span
@@ -203,17 +227,10 @@ export default function MobileOS() {
 
   return (
     <div className="fixed inset-0" style={{ background: '#060810', overflow: 'hidden' }}>
-      {/* Animated wallpaper */}
       <Wallpaper />
-
-      {/* Status bar */}
       <StatusBar time={time} />
 
-      {/* App grid */}
-      <div
-        className="absolute left-0 right-0"
-        style={{ top: 56, bottom: 110, overflowY: 'auto', padding: '12px 20px' }}
-      >
+      <div className="absolute left-0 right-0" style={{ top: 56, bottom: 110, overflowY: 'auto', padding: '12px 20px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '28px 8px', justifyItems: 'center' }}>
           {APPS.map((app) => (
             <AppIcon key={app.id} app={app} onOpen={() => handleOpen(app)} />
@@ -221,32 +238,27 @@ export default function MobileOS() {
         </div>
       </div>
 
-      {/* Dock */}
       <div className="fixed bottom-0 left-0 right-0 z-10" style={{ padding: '0 16px 20px' }}>
-        <div
-          style={{
-            background: 'rgba(255,255,255,0.14)',
-            backdropFilter: 'blur(24px)',
-            WebkitBackdropFilter: 'blur(24px)',
-            border: '1px solid rgba(255,255,255,0.18)',
-            borderRadius: 28,
-            padding: '12px 20px',
-            display: 'flex',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-          }}
-        >
+        <div style={{
+          background: 'rgba(255,255,255,0.14)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          border: '1px solid rgba(255,255,255,0.18)',
+          borderRadius: 28,
+          padding: '12px 20px',
+          display: 'flex',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+        }}>
           {dockApps.map((app) => (
             <AppIcon key={app.id} app={app} onOpen={() => handleOpen(app)} small />
           ))}
         </div>
-        {/* Home indicator */}
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 8 }}>
           <div style={{ width: 120, height: 4, background: 'rgba(255,255,255,0.55)', borderRadius: 4 }} />
         </div>
       </div>
 
-      {/* App sheet — slides up from bottom */}
       <AnimatePresence>
         {openApp && AppComp && (
           <motion.div
@@ -258,7 +270,6 @@ export default function MobileOS() {
             className="fixed inset-0 z-50 flex flex-col"
             style={{ background: '#1a1b26' }}
           >
-            {/* iOS nav bar */}
             <div
               className="shrink-0 flex items-center justify-between border-b border-white/10"
               style={{
@@ -291,8 +302,6 @@ export default function MobileOS() {
                 ✕
               </button>
             </div>
-
-            {/* App content */}
             <div className="flex-1 overflow-hidden">
               <AppComp onOpenApp={handleOpenByType} appProps={openApp.appProps} />
             </div>

@@ -7,6 +7,7 @@ const items = [
   { label: 'Role', value: 'Product Consultant at Fenergo', icon: '💼' },
   { label: 'Domain', value: 'AML/KYC · CLM · Financial Crime Compliance', icon: '🏛️' },
   { label: 'Clients', value: 'ANZ (Skyc) · Macquarie Group (ICO — 27 jurisdictions)', icon: '🌏' },
+  { label: 'What I Build', value: 'AI-powered delivery tools, full-stack web apps, automation pipelines', icon: '🛠️' },
   { label: 'Education', value: 'UTS — BSc IT, Interaction Design (GPA 6.25)', icon: '🎓' },
   { label: 'Award', value: 'Best FEIT Digital Prototype', icon: '🏆' },
   { label: 'Location', value: 'Sydney, NSW, Australia', icon: '📍' },
@@ -34,10 +35,7 @@ export default function AboutApp({ onOpenApp }: AppComponentProps) {
         </div>
 
         <p className="text-gray-300 leading-relaxed text-sm mb-8">
-          I architect enterprise solutions for financial compliance platforms at Fenergo, while
-          building thoughtful digital experiences. My work spans the full spectrum — from discovery
-          and solution design to configuration, testing, and production release across major APAC
-          institutions.
+          {"I'm a Product Consultant at Fenergo specialising in Client Lifecycle Management for Australia's major banks. I implement compliance automation across AML/KYC workflows — and I also build things. From AI-powered delivery tools that compress weeks of manual work into hours, to full-stack web applications and this OS-style portfolio you're looking at right now."}
         </p>
 
         <div className="space-y-3">

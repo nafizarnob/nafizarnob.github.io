@@ -37,7 +37,7 @@ const COMMANDS: Record<string, string | string[]> = {
     '⚙️  Fenergo Tools — Python · Flask · REST APIs (contact for details)',
   ],
   contact: [
-    'Email    : jagerotiai@gmail.com',
+    'Email    : mdnafizakter@gmail.com',
     'GitHub   : github.com/nafizarnob',
     'LinkedIn : linkedin.com/in/mdarn',
   ],
