@@ -83,15 +83,26 @@
   .about-text { padding: 16px 24px 24px; font-size: 14px; color: #333; line-height: 1.6; }
   .exp-item { display: flex; gap: 16px; padding: 16px 24px; border-bottom: 1px solid #f3f2ef; }
   .exp-item:last-child { border-bottom: none; }
-  .exp-logo { width: 48px; height: 48px; border-radius: 4px; flex-shrink: 0; background: #0a66c2; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: #fff; }
+  .exp-logo { width: 48px; height: 48px; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: #fff; overflow: hidden; }
+  .exp-logo img { width: 100%; height: 100%; object-fit: cover; }
   .exp-content { flex: 1; min-width: 0; }
   .exp-title { font-size: 14px; font-weight: 600; color: #000; }
   .exp-company { font-size: 13px; color: #333; margin-top: 1px; }
   .exp-meta { font-size: 12px; color: #666; margin-top: 2px; }
-  .exp-client { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; padding: 4px 10px; background: #e8f0fe; color: #1a56db; border-radius: 6px; font-size: 12px; font-weight: 600; }
   .exp-desc { font-size: 13px; color: #444; margin-top: 8px; line-height: 1.55; }
   .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
   .exp-tag { font-size: 12px; color: #0a66c2; background: #e8f0fe; padding: 2px 10px; border-radius: 12px; }
+  .exp-group { border-bottom: 1px solid #f3f2ef; }
+  .exp-group:last-child { border-bottom: none; }
+  .exp-group-header { display: flex; gap: 16px; padding: 16px 24px 8px; }
+  .exp-group-company { font-size: 14px; font-weight: 600; color: #000; }
+  .exp-group-meta { font-size: 12px; color: #666; margin-top: 2px; }
+  .exp-group-roles { padding-left: 88px; padding-bottom: 8px; }
+  .exp-role { padding: 8px 0; border-left: 2px solid #e0e0e0; padding-left: 16px; margin-left: -16px; position: relative; }
+  .exp-role::before { content: ''; position: absolute; left: -16px; top: 14px; width: 8px; height: 8px; background: #fff; border: 2px solid #666; border-radius: 50%; transform: translateX(-3px); }
+  .exp-role:last-child { border-left-color: transparent; }
+  .exp-role .exp-title { font-size: 13px; }
+  .exp-role .exp-meta { font-size: 11px; }
   .edu-item { display: flex; gap: 16px; padding: 16px 24px; }
   .edu-logo { width: 48px; height: 48px; border-radius: 4px; flex-shrink: 0; background: #00467f; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: #fff; }
   .edu-content { flex: 1; }
@@ -156,37 +167,76 @@
     </div>
     <div class="card">
       <div class="section-title">Experience</div>
-      <div class="exp-item">
-        <div class="exp-logo">F</div>
-        <div class="exp-content">
-          <div class="exp-title">Product Consultant</div>
-          <div class="exp-company">Fenergo &middot; Full-time</div>
-          <div class="exp-meta">Apr 2024 &ndash; Present &middot; Sydney, NSW (Hybrid)</div>
-          <div class="exp-client">📌 Client: Macquarie Group &mdash; ICO Program (27 jurisdictions)</div>
-          <div class="exp-desc">Embedded in Macquarie Group's ICO program as a senior CLM implementation lead. Own configuration, automation, and delivery of AML/KYC workflows across institutional client segments. Drive 50% faster document processing and 95% automated screening resolution through intelligent rule-engine configuration and Python-based automation tooling.</div>
-          <div class="exp-tags">
-            <span class="exp-tag">Fenergo CLM</span>
-            <span class="exp-tag">AML/KYC</span>
-            <span class="exp-tag">Macquarie Group</span>
-            <span class="exp-tag">Python</span>
-            <span class="exp-tag">Automation</span>
+
+      <!-- Fenergo — grouped roles -->
+      <div class="exp-group">
+        <div class="exp-group-header">
+          <div class="exp-logo"><img src="/fenergo-logo.jpg" alt="Fenergo"></div>
+          <div class="exp-content">
+            <div class="exp-group-company">Fenergo</div>
+            <div class="exp-group-meta">Full-time &middot; 3 yrs 8 mos</div>
+            <div class="exp-group-meta">Australia</div>
+          </div>
+        </div>
+        <div class="exp-group-roles">
+          <div class="exp-role">
+            <div class="exp-title">Product Consultant</div>
+            <div class="exp-meta">Apr 2024 &ndash; Present</div>
+            <div class="exp-desc">Leading CLM product consulting for major APAC financial institutions. Owning end-to-end delivery of Fenergo platform implementations, translating complex AML/KYC regulatory requirements into scalable configurations. Built a suite of 8 AI-powered automation tools that streamline consulting delivery across client engagements.</div>
+            <div class="exp-tags">
+              <span class="exp-tag">Fenergo CLM</span>
+              <span class="exp-tag">AML/KYC</span>
+              <span class="exp-tag">Python</span>
+              <span class="exp-tag">AI Automation</span>
+            </div>
+          </div>
+          <div class="exp-role">
+            <div class="exp-title">Configuration Analyst</div>
+            <div class="exp-meta">Apr 2023 &ndash; Jul 2024</div>
+            <div class="exp-desc">Configured and delivered Fenergo CLM solutions for tier-1 banking clients. Designed policy configurations, entity lifecycle workflows, and regulatory screening rules across multiple jurisdictions.</div>
+          </div>
+          <div class="exp-role">
+            <div class="exp-title">Graduate Configuration Analyst</div>
+            <div class="exp-meta">Nov 2022 &ndash; Jun 2023</div>
+            <div class="exp-desc">Started as a graduate in Fenergo's consulting practice. Built foundational expertise in CLM platform configuration, client onboarding workflows, and AML/KYC compliance frameworks.</div>
           </div>
         </div>
       </div>
+
+      <!-- Macquarie Group — contract -->
       <div class="exp-item">
-        <div class="exp-logo">F</div>
+        <div class="exp-logo" style="background: #000;">
+          <span style="font-size: 12px; font-weight: 800; letter-spacing: -0.5px;">MQ</span>
+        </div>
         <div class="exp-content">
-          <div class="exp-title">Implementation Consultant</div>
-          <div class="exp-company">Fenergo &middot; Full-time</div>
-          <div class="exp-meta">Sep 2021 &ndash; Apr 2024 &middot; 2 yrs 8 mos &middot; Sydney, NSW</div>
-          <div class="exp-client">📌 Client: ANZ Bank &mdash; SkyC Digital Onboarding</div>
-          <div class="exp-desc">Led product configuration and delivery for ANZ's SkyC digital onboarding project. Designed and built CLM automation modules across document collection, entity screening, and risk assessment flows. Collaborated with ANZ's compliance and technology teams to translate regulatory requirements into scalable platform solutions.</div>
+          <div class="exp-title">Product Consultant</div>
+          <div class="exp-company">Macquarie Group &middot; Contract</div>
+          <div class="exp-meta">Jun 2025 &ndash; Apr 2026 &middot; Sydney, NSW &middot; Hybrid</div>
+          <div class="exp-desc">Embedded in Macquarie Group's ICO (Institutional Client Onboarding) program, delivering Fenergo CLM implementation across 27 jurisdictions and 50+ regulations. Owning configuration, automation, and delivery of AML/KYC workflows for institutional client segments.</div>
           <div class="exp-tags">
             <span class="exp-tag">Fenergo CLM</span>
-            <span class="exp-tag">ANZ Bank</span>
-            <span class="exp-tag">Financial Crime Compliance</span>
+            <span class="exp-tag">ICO Program</span>
+            <span class="exp-tag">27 Jurisdictions</span>
+            <span class="exp-tag">AML/KYC</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ANZ — contract -->
+      <div class="exp-item">
+        <div class="exp-logo" style="background: #003F72;">
+          <span style="font-size: 13px; font-weight: 800; letter-spacing: 0.5px;">ANZ</span>
+        </div>
+        <div class="exp-content">
+          <div class="exp-title">Product Consultant and Config Analyst</div>
+          <div class="exp-company">ANZ &middot; Contract</div>
+          <div class="exp-meta">Jan 2023 &ndash; Aug 2025 &middot; Australia</div>
+          <div class="exp-desc">Delivered Fenergo CLM implementation for ANZ's Skyc digital onboarding project. Led product configuration across document collection, entity screening, and risk assessment workflows. Collaborated with ANZ's compliance and technology teams to translate regulatory requirements into platform solutions.</div>
+          <div class="exp-tags">
+            <span class="exp-tag">Fenergo CLM</span>
+            <span class="exp-tag">Skyc Project</span>
             <span class="exp-tag">Client Onboarding</span>
-            <span class="exp-tag">Rule Engine</span>
+            <span class="exp-tag">Financial Crime Compliance</span>
           </div>
         </div>
       </div>

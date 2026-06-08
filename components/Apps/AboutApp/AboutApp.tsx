@@ -7,13 +7,13 @@ const highlights = [
   { stat: '8', label: 'AI-powered tools built for Fenergo delivery', color: '#7aa2f7' },
   { stat: '27', label: 'Jurisdictions covered across Macquarie ICO', color: '#bb9af7' },
   { stat: '3+', label: 'Years implementing CLM for tier-1 banks', color: '#7dcfff' },
-  { stat: '95%', label: 'AML screening hits auto-resolved', color: '#9ece6a' },
+  { stat: '50+', label: 'Regulations handled across APAC programs', color: '#9ece6a' },
 ];
 
 const snapshot = [
   { label: 'Role', value: 'Product Consultant at Fenergo', icon: '💼' },
   { label: 'Domain', value: 'AML/KYC · CLM · Financial Crime Compliance', icon: '🏛️' },
-  { label: 'Clients', value: 'ANZ (Skyc) · Macquarie Group (ICO Program)', icon: '🌏' },
+  { label: 'Clients', value: 'ANZ · Macquarie Group · Fenergo APAC Banks', icon: '🌏' },
   { label: 'I Also Build', value: 'Full-stack web apps, AI delivery tools, this OS portfolio', icon: '🛠️' },
   { label: 'Education', value: 'UTS — BSc IT, Interaction Design', icon: '🎓' },
   { label: 'Award', value: 'Best FEIT Digital Prototype', icon: '🏆' },
