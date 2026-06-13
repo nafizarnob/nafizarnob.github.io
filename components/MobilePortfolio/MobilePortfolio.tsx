@@ -222,7 +222,7 @@ export default function MobilePortfolio() {
           <SectionTitle>Education</SectionTitle>
           <div className="rounded-xl p-4" style={{ background: '#1a1b26', border: '1px solid #2a2b3d' }}>
             <p className="font-semibold text-white text-sm">University of Technology Sydney</p>
-            <p className="text-xs text-gray-400 mt-1">BSc Information Technology — Interaction Design · 2018–2021</p>
+            <p className="text-xs text-gray-400 mt-1">BSc Information Technology — Interaction Design · 2019–2021</p>
             <div className="mt-2 text-xs px-2 py-1 rounded inline-block" style={{ background: '#2a2000', color: '#e5b800' }}>
               🏆 Best FEIT Digital Prototype
             </div>
