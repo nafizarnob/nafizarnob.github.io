@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Nafiz Arnob — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f172a;
+    --teal: #0d9488;
+    --teal-light: #f0fdfa;
+    --teal-border: #99f6e4;
+    --gray-1: #1e293b;
+    --gray-2: #475569;
+    --gray-3: #64748b;
+    --gray-4: #94a3b8;
+    --gray-5: #e2e8f0;
+    --gray-6: #f8fafc;
+    --link: #0891b2;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.55;
+    color: var(--gray-1);
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    max-width: 21cm;
+    margin: 0 auto;
+    padding: 1.6cm 1.8cm;
+    min-height: 29.7cm;
+  }
+
+  /* ─── Header ─── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 26pt;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: -0.5px;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .title {
+    font-size: 10pt;
+    font-weight: 500;
+    color: var(--teal);
+    letter-spacing: 0.02em;
+  }
+
+  .contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    text-align: right;
+    font-size: 8.5pt;
+    color: var(--gray-2);
+  }
+
+  .contact-grid a { color: var(--link); text-decoration: none; }
+
+  /* ─── Sections ─── */
+  .section { margin-bottom: 0.9rem; }
+
+  .section-label {
+    font-size: 7.5pt;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    border-bottom: 1px solid var(--gray-5);
+    padding-bottom: 3px;
+    margin-bottom: 0.6rem;
+  }
+
+  /* ─── Summary ─── */
+  .summary {
+    font-size: 9pt;
+    color: var(--gray-2);
+    line-height: 1.6;
+  }
+
+  /* ─── Experience ─── */
+  .company-block { margin-bottom: 0.85rem; }
+
+  .company-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+  }
+
+  .company-name {
+    font-weight: 600;
+    font-size: 10pt;
+    color: var(--navy);
+  }
+
+  .company-meta {
+    font-size: 8pt;
+    color: var(--gray-3);
+  }
+
+  .role-block {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 0.5rem;
+    padding: 0.35rem 0 0.35rem 0.7rem;
+    border-left: 2px solid var(--teal-border);
+    margin-bottom: 0.3rem;
+  }
+
+  .role-block:last-child { margin-bottom: 0; }
+
+  .role-title {
+    font-weight: 500;
+    font-size: 9.5pt;
+    color: var(--gray-1);
+  }
+
+  .role-date {
+    font-size: 8pt;
+    color: var(--gray-4);
+    white-space: nowrap;
+    text-align: right;
+    padding-top: 1px;
+  }
+
+  .role-desc {
+    grid-column: 1 / -1;
+    margin-top: 4px;
+  }
+
+  .role-desc ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .role-desc li {
+    font-size: 8.8pt;
+    color: var(--gray-2);
+    line-height: 1.5;
+    padding-left: 0.9em;
+    position: relative;
+    margin-bottom: 2px;
+  }
+
+  .role-desc li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  .highlight {
+    background: var(--teal-light);
+    border: 1px solid var(--teal-border);
+    border-radius: 3px;
+    padding: 4px 8px;
+    margin: 5px 0 2px;
+    font-size: 8.5pt;
+    color: var(--gray-1);
+    line-height: 1.45;
+  }
+
+  .highlight strong { color: var(--teal); font-weight: 600; }
+
+  /* ─── Skills ─── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 6px 1rem;
+    font-size: 8.8pt;
+  }
+
+  .skill-cat {
+    font-weight: 600;
+    color: var(--gray-3);
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding-top: 1px;
+  }
+
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 4px; }
+
+  .pill {
+    background: var(--gray-6);
+    border: 0.5px solid var(--gray-5);
+    border-radius: 3px;
+    padding: 2px 7px;
+    font-size: 8pt;
+    color: var(--gray-2);
+  }
+
+  .pill.featured {
+    background: var(--teal-light);
+    border-color: var(--teal-border);
+    color: #0f766e;
+    font-weight: 500;
+  }
+
+  /* ─── Education ─── */
+  .edu-block {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2px 1rem;
+  }
+
+  .edu-degree { font-weight: 500; color: var(--gray-1); }
+  .edu-school { color: var(--gray-2); font-size: 9pt; }
+  .edu-year { color: var(--gray-4); font-size: 8.5pt; text-align: right; }
+  .edu-award {
+    grid-column: 1 / -1;
+    font-size: 8.5pt;
+    color: var(--teal);
+    margin-top: 2px;
+  }
+
+  /* ─── Projects ─── */
+  .projects-grid { display: flex; flex-direction: column; gap: 0.45rem; }
+
+  .project-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2px;
+    align-items: start;
+  }
+
+  .project-name { font-weight: 500; color: var(--gray-1); font-size: 9pt; }
+  .project-tech { font-size: 7.8pt; color: var(--gray-4); text-align: right; }
+  .project-desc { font-size: 8.5pt; color: var(--gray-2); grid-column: 1 / -1; }
+
+  /* ─── Print ─── */
+  @media print {
+    body { font-size: 9pt; }
+    .page { padding: 1.2cm 1.6cm; margin: 0; max-width: none; }
+    a { color: inherit !important; }
+    .company-block { page-break-inside: avoid; }
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header class="header">
+    <div>
+      <div class="name">Md Nafiz Arnob</div>
+      <div class="title">Product Consultant · AML/KYC &amp; CLM · AI Automation</div>
+    </div>
+    <div class="contact-grid">
+      <span>Sydney, NSW, Australia</span>
+      <a href="mailto:mdnafizakter@gmail.com">mdnafizakter@gmail.com</a>
+      <a href="https://linkedin.com/in/mdarn">linkedin.com/in/mdarn</a>
+      <a href="https://github.com/nafizarnob">github.com/nafizarnob</a>
+      <a href="https://nafizarnob.github.io">nafizarnob.github.io</a>
+    </div>
+  </header>
+
+  <!-- Summary -->
+  <section class="section">
+    <div class="section-label">Professional Summary</div>
+    <p class="summary">
+      Product Consultant with 3+ years implementing Fenergo's CLM platform for Australia's largest financial institutions — ANZ and Macquarie Group. Expert in translating complex AML/KYC regulatory requirements into scalable, production-ready platform configurations across multi-jurisdiction programmes. Built a suite of 8 AI-powered automation tools that compressed weeks of manual consulting delivery into hours, adopted org-wide at Fenergo. Currently embedded in Macquarie Group's 27-jurisdiction Institutional Client Onboarding programme. Full-stack developer outside of consulting, shipping production web applications using Next.js, TypeScript, and PostgreSQL.
+    </p>
+  </section>
+
+  <!-- Experience -->
+  <section class="section">
+    <div class="section-label">Experience</div>
+
+    <!-- Fenergo -->
+    <div class="company-block">
+      <div class="company-header">
+        <span class="company-name">Fenergo</span>
+        <span class="company-meta">Nov 2022 – Present &nbsp;·&nbsp; Full-time &nbsp;·&nbsp; Australia</span>
+      </div>
+
+      <div class="role-block">
+        <div class="role-title">Product Consultant</div>
+        <div class="role-date">Apr 2024 – Present</div>
+        <div class="role-desc">
+          <ul>
+            <li>Lead end-to-end CLM consulting delivery for major APAC financial institutions, translating AML/KYC regulations into scalable Fenergo platform configurations</li>
+            <li>Designed and built a suite of 8 AI-powered tools that streamlined consulting delivery across all client engagements — reducing manual turnaround from weeks to hours</li>
+          </ul>
+          <div class="highlight">
+            <strong>Automation Suite highlights:</strong> Requirement Orchestrator v7 — reads business requirements, auto-generates Fenergo config, deploys and tests end-to-end with quality gates &nbsp;·&nbsp; Entity Runner — autonomous journey execution via live Fenergo APIs &nbsp;·&nbsp; Configuration Assistant — AI configurator from any input (text, screenshots, URLs) &nbsp;·&nbsp; Policy Extractor — auditable Excel extracts adopted org-wide
+          </div>
+        </div>
+      </div>
+
+      <div class="role-block">
+        <div class="role-title">Configuration Analyst</div>
+        <div class="role-date">Apr 2023 – Jul 2024</div>
+        <div class="role-desc">
+          <ul>
+            <li>Configured and delivered Fenergo CLM solutions for tier-1 banking clients across multiple jurisdictions</li>
+            <li>Designed policy configurations, entity lifecycle workflows, and regulatory screening rules</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="role-block">
+        <div class="role-title">Graduate Configuration Analyst</div>
+        <div class="role-date">Nov 2022 – Jun 2023</div>
+        <div class="role-desc">
+          <ul>
+            <li>Built foundational expertise in Fenergo CLM configuration, AML/KYC compliance frameworks, and client onboarding workflow design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Macquarie -->
+    <div class="company-block">
+      <div class="company-header">
+        <span class="company-name">Macquarie Group</span>
+        <span class="company-meta">Jun 2025 – Jun 2026 &nbsp;·&nbsp; Contract &nbsp;·&nbsp; Sydney, NSW &nbsp;·&nbsp; Hybrid</span>
+      </div>
+      <div class="role-block">
+        <div class="role-title">Product Consultant</div>
+        <div class="role-date">Jun 2025 – Jun 2026</div>
+        <div class="role-desc">
+          <ul>
+            <li>Embedded in Macquarie Group's ICO (Institutional Client Onboarding) programme, delivering Fenergo CLM implementation across 27 jurisdictions and 50+ regulations</li>
+            <li>Own configuration, automation, and delivery of AML/KYC workflows for institutional client segments</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANZ -->
+    <div class="company-block">
+      <div class="company-header">
+        <span class="company-name">ANZ</span>
+        <span class="company-meta">Jan 2023 – Aug 2025 &nbsp;·&nbsp; Contract &nbsp;·&nbsp; Australia</span>
+      </div>
+      <div class="role-block">
+        <div class="role-title">Product Consultant &amp; Configuration Analyst</div>
+        <div class="role-date">Jan 2023 – Aug 2025</div>
+        <div class="role-desc">
+          <ul>
+            <li>Delivered Fenergo CLM implementation for ANZ's Skyc digital onboarding project</li>
+            <li>Led product configuration across document collection, entity screening, and risk assessment workflows</li>
+            <li>Collaborated with ANZ compliance and technology teams to translate regulatory requirements into platform solutions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="section">
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <span class="skill-cat">Domain</span>
+      <div class="skill-pills">
+        <span class="pill featured">Fenergo CLM</span>
+        <span class="pill featured">AML / KYC</span>
+        <span class="pill">Financial Crime Compliance</span>
+        <span class="pill">Client Lifecycle Management</span>
+        <span class="pill">Client Onboarding</span>
+        <span class="pill">Regulatory Compliance</span>
+        <span class="pill">Risk Assessment</span>
+      </div>
+      <span class="skill-cat">Engineering</span>
+      <div class="skill-pills">
+        <span class="pill featured">Python</span>
+        <span class="pill featured">Next.js</span>
+        <span class="pill featured">TypeScript</span>
+        <span class="pill">Flask</span>
+        <span class="pill">React</span>
+        <span class="pill">Tailwind CSS</span>
+        <span class="pill">Node.js</span>
+        <span class="pill">PostgreSQL</span>
+        <span class="pill">Prisma</span>
+        <span class="pill">REST APIs</span>
+        <span class="pill">Claude AI</span>
+        <span class="pill">Git</span>
+        <span class="pill">Vercel</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section">
+    <div class="section-label">Education</div>
+    <div class="edu-block">
+      <div class="edu-degree">Bachelor of Science — Information Technology (Interaction Design)</div>
+      <div class="edu-year">2018 – 2021</div>
+      <div class="edu-school">University of Technology Sydney</div>
+      <div></div>
+      <div class="edu-award">&#127942; Best FEIT Digital Prototype — Faculty of Engineering and Information Technology</div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section">
+    <div class="section-label">Projects</div>
+    <div class="projects-grid">
+      <div class="project-row">
+        <div class="project-name">Fenergo Delivery Automation Suite</div>
+        <div class="project-tech">Python · Flask · Claude AI · Fenergo API</div>
+        <div class="project-desc">8 AI-powered consulting tools built to automate repetitive CLM delivery tasks — from config extraction and environment diffing to fully autonomous journey execution. Adopted org-wide.</div>
+      </div>
+      <div class="project-row">
+        <div class="project-name">PawFound <span style="font-weight:400; color: var(--gray-4); font-size:8pt">· pawfound.vercel.app</span></div>
+        <div class="project-tech">Next.js 14 · Prisma · PostgreSQL · Vercel</div>
+        <div class="project-desc">Full-stack lost &amp; found pet platform with community photo posting, location-based matching, and real-time status tracking.</div>
+      </div>
+      <div class="project-row">
+        <div class="project-name">Shopnopuri <span style="font-weight:400; color: var(--gray-4); font-size:8pt">· shopnopuri-website.vercel.app</span></div>
+        <div class="project-tech">Next.js · TypeScript · Tailwind CSS · i18n</div>
+        <div class="project-desc">Bilingual (Bengali &amp; English) tourism website for one of Bangladesh's largest amusement parks with full i18n routing.</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
