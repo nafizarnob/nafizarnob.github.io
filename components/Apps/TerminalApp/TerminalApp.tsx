@@ -22,7 +22,7 @@ const COMMANDS: Record<string, string | string[]> = {
     'Company  : Fenergo (3+ years)',
     'Domain   : AML/KYC, CLM, Financial Crime Compliance',
     'Location : Sydney, NSW, Australia',
-    'Education: UTS BSc IT — Interaction Design (GPA 6.25)',
+    'Education: UTS BSc IT — Interaction Design',
     'Award    : Best FEIT Digital Prototype',
   ],
   skills: [

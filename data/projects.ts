@@ -10,7 +10,7 @@ export const projects: Project[] = [
     tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'i18n'],
     links: [
       { label: 'GitHub', url: 'https://github.com/nafizarnob/shopnopuri-website' },
-      { label: 'Live Site', url: 'https://shopnopuri.com' },
+      { label: 'Live Site', url: 'https://shopnopuri-website.vercel.app/' },
     ],
     websiteUrl: 'https://shopnopuri-website.vercel.app/',
     category: 'personal',
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     links: [{ label: '💼 View LinkedIn Profile', url: '/linkedin-profile.html' }],
     category: 'enterprise',
     emoji: '⚙️',
-    logo: '/fenergo-logo.jpg',
+    logo: '/fenergo-logo-new.png',
     highlights: [
       'Requirement Orchestrator v7 — reads requirements, auto-generates platform config, deploys and tests it end-to-end with guardrails and quality gates',
       'Entity Runner — fully autonomous journey execution through live Fenergo APIs, handles any journey type (onboarding, review, remediation)',
