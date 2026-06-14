@@ -11,6 +11,7 @@ const DEFAULT_SIZES: Record<AppType, { width: number; height: number }> = {
   terminal: { width: 640, height: 420 },
   browser: { width: 900, height: 600 },
   flappy: { width: 520, height: 520 },
+  orchestration: { width: 1000, height: 680 },
 };
 
 const APP_TITLES: Record<AppType, string> = {
@@ -19,6 +20,7 @@ const APP_TITLES: Record<AppType, string> = {
   terminal: 'Terminal',
   browser: 'Browser',
   flappy: 'Flappy Bird',
+  orchestration: 'Agent Orchestration',
 };
 
 export function useWindowManager() {
@@ -96,13 +98,15 @@ export function useWindowManager() {
   }, []);
 
   const focusWindow = useCallback((id: string) => {
-    setWindows((prev) =>
-      prev.map((w) =>
+    setWindows((prev) => {
+      const target = prev.find((w) => w.id === id);
+      if (target?.isFocused && !target.isMinimized) return prev;
+      return prev.map((w) =>
         w.id === id
           ? { ...w, isFocused: true, isMinimized: false, zIndex: ++zCounter }
           : { ...w, isFocused: false }
-      )
-    );
+      );
+    });
   }, []);
 
   const updatePosition = useCallback((id: string, position: { x: number; y: number }) => {

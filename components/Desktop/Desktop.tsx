@@ -29,6 +29,15 @@ const DESKTOP_ICON_SVG: Record<string, React.ReactNode> = {
       <path d="M8 18C10 22 18 22 20 18" stroke="#1a1a2e" strokeWidth="1" fill="none"/>
     </svg>
   ),
+  orchestration: (
+    <svg width="30" height="28" viewBox="0 0 30 28" fill="none">
+      <circle cx="9" cy="14" r="5" fill="#1a1a2e" stroke="#D9A441" strokeWidth="1.5"/>
+      <circle cx="22" cy="8" r="4" fill="#1a1a2e" stroke="#9B8CFF" strokeWidth="1.5"/>
+      <circle cx="22" cy="20" r="4" fill="#1a1a2e" stroke="#58C39A" strokeWidth="1.5"/>
+      <path d="M14 12L18 9" stroke="#D9A441" strokeWidth="1" strokeDasharray="2 2"/>
+      <path d="M14 16L18 19" stroke="#58C39A" strokeWidth="1" strokeDasharray="2 2"/>
+    </svg>
+  ),
 };
 
 function IconContent({ icon }: { icon: DesktopIcon }) {

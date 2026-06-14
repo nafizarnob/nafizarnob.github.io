@@ -79,4 +79,5 @@ export const desktopIcons: DesktopIcon[] = [
     appProps: { url: '/linkedin-profile.html', title: 'LinkedIn — Nafiz Arnob' },
   },
   { id: 'flappy', label: 'Flappy Bird', icon: '🐦', app: 'flappy' },
+  { id: 'orchestration', label: 'AI Agents', icon: '🤖', app: 'orchestration' },
 ];

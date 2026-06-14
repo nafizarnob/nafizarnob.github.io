@@ -89,6 +89,15 @@ export default function ProjectsViewer({ onOpenApp }: AppComponentProps) {
 
       {/* Actions */}
       <div className="flex flex-wrap gap-3">
+        {project.id === 'fenergo-tools' && (
+          <button
+            onClick={() => onOpenApp?.('orchestration')}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all"
+            style={{ background: 'linear-gradient(135deg, #D9A441, #9B8CFF)', color: '#0c0c0f' }}
+          >
+            🤖 View Agent Orchestration
+          </button>
+        )}
         {project.websiteUrl && (
           <button
             onClick={() => openInBrowser(project)}

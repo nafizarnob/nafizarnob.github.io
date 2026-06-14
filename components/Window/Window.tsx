@@ -8,6 +8,7 @@ import AboutApp from '@/components/Apps/AboutApp/AboutApp';
 import TerminalApp from '@/components/Apps/TerminalApp/TerminalApp';
 import BrowserApp from '@/components/Apps/BrowserApp/BrowserApp';
 import FlappyApp from '@/components/Apps/FlappyApp/FlappyApp';
+import OrchestrationApp from '@/components/Apps/OrchestrationApp/OrchestrationApp';
 
 interface WindowProps {
   window: WindowState;
@@ -26,6 +27,7 @@ const APP_COMPONENTS: Record<AppType, React.ComponentType<AppComponentProps>> = 
   terminal: TerminalApp,
   browser: BrowserApp,
   flappy: FlappyApp,
+  orchestration: OrchestrationApp,
 };
 
 function TitleBar({
@@ -162,7 +164,7 @@ export default function Window({
           minHeight={300}
           bounds="parent"
           dragHandleClassName="window-titlebar"
-          onMouseDown={() => onFocus(win.id)}
+          onMouseDown={() => requestAnimationFrame(() => onFocus(win.id))}
           onDragStop={(_, d) => onPositionChange(win.id, { x: d.x, y: d.y })}
           onResizeStop={(_, __, ref, ___, pos) => {
             onSizeChange(win.id, {

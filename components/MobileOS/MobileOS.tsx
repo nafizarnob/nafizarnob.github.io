@@ -9,6 +9,7 @@ import AboutApp from '@/components/Apps/AboutApp/AboutApp';
 import TerminalApp from '@/components/Apps/TerminalApp/TerminalApp';
 import BrowserApp from '@/components/Apps/BrowserApp/BrowserApp';
 import FlappyApp from '@/components/Apps/FlappyApp/FlappyApp';
+import OrchestrationApp from '@/components/Apps/OrchestrationApp/OrchestrationApp';
 import { AppType } from '@/types';
 
 // ── SVG Icons (cross-platform, no emoji rendering issues) ───────
@@ -40,6 +41,16 @@ const BirdIcon = () => (
     <circle cx="17.5" cy="9.2" r="0.8" fill="#fff"/>
     <path d="M20 14C22 13 24 14 24 14L20 15Z" fill="#F97316"/>
     <path d="M8 18C10 22 18 22 20 18" stroke="#1a1a2e" strokeWidth="1" fill="none"/>
+  </svg>
+);
+
+const AgentIcon = () => (
+  <svg width="28" height="26" viewBox="0 0 30 28" fill="none">
+    <circle cx="9" cy="14" r="5" fill="#1a1a2e" stroke="#D9A441" strokeWidth="1.5"/>
+    <circle cx="22" cy="8" r="4" fill="#1a1a2e" stroke="#9B8CFF" strokeWidth="1.5"/>
+    <circle cx="22" cy="20" r="4" fill="#1a1a2e" stroke="#58C39A" strokeWidth="1.5"/>
+    <path d="M14 12L18 9" stroke="#D9A441" strokeWidth="1" strokeDasharray="2 2"/>
+    <path d="M14 16L18 19" stroke="#58C39A" strokeWidth="1" strokeDasharray="2 2"/>
   </svg>
 );
 
@@ -96,6 +107,13 @@ const APPS: MobileApp[] = [
     gradient: 'linear-gradient(145deg, #0369a1, #38bdf8)',
     icon: <BirdIcon />,
   },
+  {
+    id: 'orchestration',
+    label: 'AI Agents',
+    appType: 'orchestration',
+    gradient: 'linear-gradient(145deg, #3a2a10, #D9A441)',
+    icon: <AgentIcon />,
+  },
 ];
 
 const DOCK_IDS = ['projects', 'about', 'linkedin', 'flappy'];
@@ -106,6 +124,7 @@ const APP_COMPONENTS: Record<AppType, React.ComponentType<any>> = {
   terminal: TerminalApp,
   browser: BrowserApp,
   flappy: FlappyApp,
+  orchestration: OrchestrationApp,
 };
 
 const APP_TITLE: Record<string, string> = {
@@ -115,6 +134,7 @@ const APP_TITLE: Record<string, string> = {
   terminal: 'Terminal',
   flappy: 'Flappy Bird',
   browser: 'Browser',
+  orchestration: 'AI Agents',
 };
 
 // ── Sub-components ───────────────────────────────────────────────

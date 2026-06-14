@@ -11,7 +11,7 @@ export interface WindowState {
   appProps?: Record<string, string>;
 }
 
-export type AppType = 'projects' | 'about' | 'terminal' | 'browser' | 'flappy';
+export type AppType = 'projects' | 'about' | 'terminal' | 'browser' | 'flappy' | 'orchestration';
 
 export interface AppComponentProps {
   onOpenApp?: (app: AppType, props?: Record<string, string>) => void;

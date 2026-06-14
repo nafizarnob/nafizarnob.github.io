@@ -10,6 +10,7 @@ const APP_ICONS: Record<AppType, string> = {
   terminal: '💻',
   browser: '🌐',
   flappy: '🐦',
+  orchestration: '🤖',
 };
 
 interface TaskbarProps {
