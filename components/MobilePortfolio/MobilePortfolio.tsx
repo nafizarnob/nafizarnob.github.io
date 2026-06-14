@@ -5,9 +5,11 @@ import { motion } from 'framer-motion';
 import { projects } from '@/data/projects';
 
 const skills = {
-  Domain: ['Fenergo CLM', 'AML / KYC', 'Financial Crime Compliance', 'Client Onboarding', 'Regulatory Compliance', 'Risk Assessment'],
-  Engineering: ['Python', 'Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'PostgreSQL', 'Prisma', 'AWS', 'Azure'],
-  'AI Tools': ['GitHub Copilot', 'Copilot CLI', 'OpenAI Codex', 'Claude Code'],
+  Consulting: ['Business Analysis', 'Solution Design', 'Stakeholder Engagement', 'Agile / Scrum', 'UAT Management', 'Release Management', 'Process Improvement', 'Documentation'],
+  Domain: ['Fenergo CLM', 'AML / KYC', 'KYC & AML Policy SME', 'Financial Crime Compliance', 'Client Lifecycle Management', 'Client Onboarding', 'Regulatory Compliance', 'Risk Assessment'],
+  Engineering: ['Python', 'JavaScript', 'Flask', 'SQL', 'REST APIs', 'Next.js', 'TypeScript', 'React', 'PostgreSQL', 'Git', 'Jira', 'Excel (Advanced)', 'Office 365', 'Vercel'],
+  'AI & Automation': ['GitHub Copilot', 'Copilot CLI', 'OpenAI Codex', 'Claude & MCP', 'AI Agents', 'Prompt Engineering', 'Workflow Automation'],
+  'Design & UX': ['UI/UX Design', 'Prototyping', 'Figma', 'Adobe XD', 'Protopie'],
 };
 
 const experience = [

@@ -190,7 +190,7 @@
   /* ─── Skills ─── */
   .skills-grid {
     display: grid;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 115px 1fr;
     gap: 6px 1rem;
     font-size: 8.8pt;
   }
@@ -213,13 +213,6 @@
     padding: 2px 7px;
     font-size: 8pt;
     color: var(--gray-2);
-  }
-
-  .pill.featured {
-    background: var(--teal-light);
-    border-color: var(--teal-border);
-    color: #0f766e;
-    font-weight: 500;
   }
 
   /* ─── Education ─── */
@@ -321,7 +314,12 @@
             <li>Designed and built a suite of 8 AI-powered tools that streamlined consulting delivery across all client engagements — reducing manual turnaround from weeks to hours</li>
           </ul>
           <div class="highlight">
-            <strong>Automation Suite highlights:</strong> Requirement Orchestrator v7 — reads business requirements, auto-generates Fenergo config, deploys and tests end-to-end with quality gates &nbsp;·&nbsp; Entity Runner — autonomous journey execution via live Fenergo APIs &nbsp;·&nbsp; Configuration Assistant — AI configurator from any input (text, screenshots, URLs) &nbsp;·&nbsp; Policy Extractor — auditable Excel extracts adopted org-wide
+            <strong>Automation Suite — 5 tools, adopted org-wide:</strong><br>
+            <strong>Requirement Orchestrator</strong> — analysis &amp; planning agent; accepts Excel, free text, screenshots or URLs; compares against live tenant config and produces branded pre/post-config HTML reports with delta tables, test cases and validation results. Never writes config — hands off a scoped instruction package to Configuration Assistant.<br>
+            <strong>Configuration Assistant</strong> — write operator; applies changes to live FenX tenant via API (policies, journey schemas, lookups, document requirements, risk config); enforces DEV-only guardrail; produces regression/progression evidence packs after every change.<br>
+            <strong>Entity Runner</strong> — journey automation agent; creates realistic, policy-aware test entities via API; populates data, links related parties, progresses onboarding tasks step-by-step; knows when to stop at approval gates and screening matches.<br>
+            <strong>Configuration Extractor Tool</strong> — Python/Flask web app; orchestrates multiple Fenergo APIs to extract full platform config into business-friendly Excel; reduced extraction from hours to 1–2 clicks, adopted org-wide.<br>
+            <strong>Configuration Exchange Report Generator</strong> — addresses gaps in Fenergo's native promotion reporting; produces comprehensive, client-friendly config change documentation for cross-environment migrations.
           </div>
         </div>
       </div>
@@ -390,10 +388,22 @@
   <section class="section">
     <div class="section-label">Skills</div>
     <div class="skills-grid">
+      <span class="skill-cat">Consulting</span>
+      <div class="skill-pills">
+        <span class="pill">Business Analysis</span>
+        <span class="pill">Solution Design</span>
+        <span class="pill">Stakeholder Engagement</span>
+        <span class="pill">Agile / Scrum</span>
+        <span class="pill">UAT Management</span>
+        <span class="pill">Release Management</span>
+        <span class="pill">Process Improvement</span>
+        <span class="pill">Documentation</span>
+      </div>
       <span class="skill-cat">Domain</span>
       <div class="skill-pills">
-        <span class="pill featured">Fenergo CLM</span>
-        <span class="pill featured">AML / KYC</span>
+        <span class="pill">Fenergo CLM</span>
+        <span class="pill">AML / KYC</span>
+        <span class="pill">KYC &amp; AML Policy SME</span>
         <span class="pill">Financial Crime Compliance</span>
         <span class="pill">Client Lifecycle Management</span>
         <span class="pill">Client Onboarding</span>
@@ -402,25 +412,38 @@
       </div>
       <span class="skill-cat">Engineering</span>
       <div class="skill-pills">
-        <span class="pill featured">Python</span>
-        <span class="pill featured">Next.js</span>
-        <span class="pill featured">TypeScript</span>
+        <span class="pill">Python</span>
+        <span class="pill">JavaScript</span>
         <span class="pill">Flask</span>
-        <span class="pill">React</span>
-        <span class="pill">Tailwind CSS</span>
-        <span class="pill">Node.js</span>
-        <span class="pill">PostgreSQL</span>
-        <span class="pill">Prisma</span>
+        <span class="pill">SQL</span>
         <span class="pill">REST APIs</span>
+        <span class="pill">Next.js</span>
+        <span class="pill">TypeScript</span>
+        <span class="pill">React</span>
+        <span class="pill">PostgreSQL</span>
         <span class="pill">Git</span>
+        <span class="pill">Jira</span>
+        <span class="pill">Excel (Advanced)</span>
+        <span class="pill">Office 365</span>
         <span class="pill">Vercel</span>
       </div>
-      <span class="skill-cat">AI Tools</span>
+      <span class="skill-cat">AI &amp; Automation</span>
       <div class="skill-pills">
-        <span class="pill featured">GitHub Copilot</span>
-        <span class="pill featured">Copilot CLI</span>
-        <span class="pill featured">OpenAI Codex</span>
-        <span class="pill">Claude Code</span>
+        <span class="pill">GitHub Copilot</span>
+        <span class="pill">Copilot CLI</span>
+        <span class="pill">OpenAI Codex</span>
+        <span class="pill">Claude &amp; MCP</span>
+        <span class="pill">AI Agents</span>
+        <span class="pill">Prompt Engineering</span>
+        <span class="pill">Workflow Automation</span>
+      </div>
+      <span class="skill-cat">Design &amp; UX</span>
+      <div class="skill-pills">
+        <span class="pill">UI/UX Design</span>
+        <span class="pill">Prototyping</span>
+        <span class="pill">Figma</span>
+        <span class="pill">Adobe XD</span>
+        <span class="pill">Protopie</span>
       </div>
     </div>
   </section>
@@ -433,7 +456,7 @@
       <div class="edu-year">2019 – 2021</div>
       <div class="edu-school">University of Technology Sydney</div>
       <div></div>
-      <div class="edu-award">&#127942; Best FEIT Digital Prototype — Faculty of Engineering and Information Technology</div>
+      <div class="edu-award">&#127942; Best FEIT Digital Prototype — Faculty of Engineering and Information Technology &nbsp;·&nbsp; Dean's List</div>
     </div>
   </section>
 
@@ -442,9 +465,29 @@
     <div class="section-label">Projects</div>
     <div class="projects-grid">
       <div class="project-row">
-        <div class="project-name">Fenergo Delivery Automation Suite</div>
-        <div class="project-tech">Python · Flask · Claude AI · Fenergo API</div>
-        <div class="project-desc">8 AI-powered consulting tools built to automate repetitive CLM delivery tasks — from config extraction and environment diffing to fully autonomous journey execution. Adopted org-wide.</div>
+        <div class="project-name">Requirement Orchestrator</div>
+        <div class="project-tech">Python · Claude AI · Fenergo API · HTML Reports</div>
+        <div class="project-desc">Analysis &amp; planning agent for CLM requirements. Accepts Excel, free text, screenshots or URLs — compares against live tenant config and outputs branded tabbed HTML reports with delta tables, test cases, and validation results. Never writes config; hands off scoped instruction packages to Configuration Assistant.</div>
+      </div>
+      <div class="project-row">
+        <div class="project-name">Configuration Assistant</div>
+        <div class="project-tech">Python · Fenergo REST API · Claude AI</div>
+        <div class="project-desc">Write operator that applies configuration changes to live FenX tenants via API — policies, journey schemas, lookups, document requirements, risk config. Read-before-write, backup-before-change; enforces a DEV-only guardrail; produces regression and progression evidence packs after every change.</div>
+      </div>
+      <div class="project-row">
+        <div class="project-name">Entity Runner</div>
+        <div class="project-tech">Python · Fenergo API · Claude AI</div>
+        <div class="project-desc">Journey automation agent that creates realistic, policy-aware test entities — populates data, links related parties and accounts, and progresses onboarding tasks step-by-step via API. Reads active tenant policy to build coherent data stories; handles approval gates and screening matches cleanly.</div>
+      </div>
+      <div class="project-row">
+        <div class="project-name">Configuration Extractor Tool</div>
+        <div class="project-tech">Python · Flask · openpyxl · Fenergo API</div>
+        <div class="project-desc">Web application that orchestrates multiple Fenergo domain APIs to extract full platform configuration into business-friendly Excel format. Reduced extraction time from hours to one click. Adopted org-wide; significantly improved data transparency for stakeholders and QA.</div>
+      </div>
+      <div class="project-row">
+        <div class="project-name">Configuration Exchange Report Generator</div>
+        <div class="project-tech">Python · Flask · Fenergo API</div>
+        <div class="project-desc">Advanced reporting tool for configuration migrations across environments — addresses gaps in native Fenergo reporting by producing comprehensive, client-friendly change documentation for UAT and production releases.</div>
       </div>
       <div class="project-row">
         <div class="project-name">PawFound <span style="font-weight:400; color: var(--gray-4); font-size:8pt">· pawfound.vercel.app</span></div>

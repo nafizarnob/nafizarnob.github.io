@@ -26,11 +26,11 @@ const COMMANDS: Record<string, string | string[]> = {
     'Award    : Best FEIT Digital Prototype',
   ],
   skills: [
-    'Frontend  : Next.js · React · TypeScript · Tailwind CSS',
-    'Backend   : Node.js · Python · Flask · PostgreSQL · Prisma',
-    'Domain    : AML/KYC · CLM · Fenergo · Financial Crime',
-    'Tools     : GitHub · Vercel · REST APIs · openpyxl',
-    'AI Tools  : GitHub Copilot · Copilot CLI · OpenAI Codex · Claude Code',
+    'Consulting : Business Analysis · Solution Design · Agile/Scrum · UAT Management',
+    'Domain     : Fenergo CLM · AML/KYC · Financial Crime Compliance · KYC Policy SME',
+    'Engineering: Python · JavaScript · Flask · SQL · Next.js · TypeScript · React · PostgreSQL',
+    'AI & Auto  : GitHub Copilot · Copilot CLI · OpenAI Codex · Claude & MCP · AI Agents',
+    'Design     : UI/UX Design · Figma · Adobe XD · Protopie · Prototyping',
   ],
   projects: [
     '📁 Shopnopuri   — Next.js · TypeScript · i18n (github.com/nafizarnob/shopnopuri-website)',
