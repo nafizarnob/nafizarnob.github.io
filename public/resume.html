@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Md Nafiz Arnob — Resume</title>
+<title>Nafiz Arnob — Resume</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&display=swap" rel="stylesheet">
@@ -57,7 +57,8 @@
     font-size: 26pt;
     font-weight: 500;
     color: var(--navy);
-    letter-spacing: -0.5px;
+    letter-spacing: 0.3px;
+    font-feature-settings: "liga" 0;
     line-height: 1;
     margin-bottom: 0.3rem;
   }
@@ -274,7 +275,7 @@
   <!-- Header -->
   <header class="header">
     <div>
-      <div class="name">Md Nafiz Arnob</div>
+      <div class="name">Nafiz Arnob</div>
       <div class="title">Product Consultant · AML/KYC &amp; CLM · AI Automation</div>
     </div>
     <div class="contact-grid">
@@ -290,7 +291,7 @@
   <section class="section">
     <div class="section-label">Professional Summary</div>
     <p class="summary">
-      Product Consultant with 3+ years implementing Fenergo's CLM platform for Australia's largest financial institutions — ANZ and Macquarie Group. Expert in translating complex AML/KYC regulatory requirements into scalable, production-ready platform configurations across multi-jurisdiction programmes. Built a suite of 8 AI-powered automation tools that compressed weeks of manual consulting delivery into hours, adopted org-wide at Fenergo. Currently embedded in Macquarie Group's 27-jurisdiction Institutional Client Onboarding programme. Full-stack developer outside of consulting, shipping production web applications using Next.js, TypeScript, and PostgreSQL.
+      Product Consultant with 3+ years delivering Fenergo's CLM platform across Australia's largest financial institutions — ANZ and Macquarie Group. Expert in translating complex AML/KYC and financial crime compliance requirements into scalable, production-ready platform configurations, managing delivery across multi-jurisdiction programmes through strong stakeholder engagement. Built a suite of AI-powered delivery tools adopted org-wide across all Fenergo client engagements, including ANZ and Macquarie, compressing weeks of manual consulting work into hours. Currently embedded in Macquarie Group's 27-jurisdiction Institutional Client Onboarding programme. Outside of consulting, actively exploring AI-enabled product development — building web applications and automation tooling to sharpen technical delivery and drive personal productivity.
     </p>
   </section>
 
@@ -311,15 +312,15 @@
         <div class="role-desc">
           <ul>
             <li>Lead end-to-end CLM consulting delivery for major APAC financial institutions, translating AML/KYC regulations into scalable Fenergo platform configurations</li>
-            <li>Designed and built a suite of 8 AI-powered tools that streamlined consulting delivery across all client engagements — reducing manual turnaround from weeks to hours</li>
+            <li>Designed and built a suite of AI-powered delivery tools adopted org-wide across all Fenergo client engagements, including ANZ and Macquarie — compressing weeks of manual consulting delivery into hours</li>
           </ul>
           <div class="highlight">
-            <strong>Automation Suite — 5 tools, adopted org-wide:</strong><br>
-            <strong>Requirement Orchestrator</strong> — analysis &amp; planning agent; accepts Excel, free text, screenshots or URLs; compares against live tenant config and produces branded pre/post-config HTML reports with delta tables, test cases and validation results. Never writes config — hands off a scoped instruction package to Configuration Assistant.<br>
-            <strong>Configuration Assistant</strong> — write operator; applies changes to live FenX tenant via API (policies, journey schemas, lookups, document requirements, risk config); enforces DEV-only guardrail; produces regression/progression evidence packs after every change.<br>
-            <strong>Entity Runner</strong> — journey automation agent; creates realistic, policy-aware test entities via API; populates data, links related parties, progresses onboarding tasks step-by-step; knows when to stop at approval gates and screening matches.<br>
-            <strong>Configuration Extractor Tool</strong> — Python/Flask web app; orchestrates multiple Fenergo APIs to extract full platform config into business-friendly Excel; reduced extraction from hours to 1–2 clicks, adopted org-wide.<br>
-            <strong>Configuration Exchange Report Generator</strong> — addresses gaps in Fenergo's native promotion reporting; produces comprehensive, client-friendly config change documentation for cross-environment migrations.
+            <strong>Automation Suite — adopted org-wide across all Fenergo client engagements, including ANZ and Macquarie:</strong><br>
+            <strong>Requirement Orchestrator</strong> — reads client requirements from any source, analyses gaps against the live platform configuration, and produces structured delivery plans with test cases and validation — cutting scoping time from days to minutes.<br>
+            <strong>Entity Runner</strong> — automates test entity creation and onboarding journey progression against live platform configuration, removing manual testing effort and validating delivery quality before go-live.<br>
+            <strong>Configuration Assistant</strong> — applies approved platform changes directly to live environments with built-in safeguards and automatic evidence packs for audit and stakeholder sign-off.<br>
+            <strong>Configuration Extractor Tool</strong> — exports the full platform configuration into business-ready Excel reports at one click, replacing a process that previously took hours and improving stakeholder visibility.<br>
+            <strong>Configuration Exchange Report Generator</strong> — generates client-ready change documentation for cross-environment migrations, giving stakeholders and compliance teams clear visibility into what changed and why.
           </div>
         </div>
       </div>
@@ -375,9 +376,7 @@
         <div class="role-date">Jan 2023 – Aug 2025</div>
         <div class="role-desc">
           <ul>
-            <li>Delivered Fenergo CLM implementation for ANZ's Skyc digital onboarding project</li>
-            <li>Led product configuration across document collection, entity screening, and risk assessment workflows</li>
-            <li>Collaborated with ANZ compliance and technology teams to translate regulatory requirements into platform solutions</li>
+            <li>Contributed to ANZ's SkyC digital onboarding programme achieving 70% straight-through processing across regular customer reviews, with remaining reviews completed 91% faster, freeing 640,000 staff hours across 1 million reviews.</li>
           </ul>
         </div>
       </div>
@@ -467,7 +466,7 @@
       <div class="project-row">
         <div class="project-name">Requirement Orchestrator</div>
         <div class="project-tech">Python · Claude AI · Fenergo API · HTML Reports</div>
-        <div class="project-desc">Analysis &amp; planning agent for CLM requirements. Accepts Excel, free text, screenshots or URLs — compares against live tenant config and outputs branded tabbed HTML reports with delta tables, test cases, and validation results. Never writes config; hands off scoped instruction packages to Configuration Assistant.</div>
+        <div class="project-desc">AI analysis &amp; planning agent for CLM requirements. Ingests requirements in any format — Excel, free text, screenshots or URLs — maps against live tenant config, and outputs delta reports, test cases and scoped change packages. Runs progression and regression tests via the Fenergo Policy Evaluation Engine. Never writes config; hands off to Configuration Assistant.</div>
       </div>
       <div class="project-row">
         <div class="project-name">Configuration Assistant</div>
