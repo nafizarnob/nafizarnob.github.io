@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "powershell",
+            "command": "$j=[Console]::In.ReadToEnd().Trim()|ConvertFrom-Json;$f=$j.tool_input.file_path;if($f-match'\\.(ts|tsx)$'-and$f-match'os-portfolio'){Push-Location 'D:\\Personal Portfolio\\os-portfolio';npx eslint --fix $f 2>$null;Pop-Location};exit 0",
+            "statusMessage": "Linting..."
+          }
+        ]
+      }
+    ]
+  }
+}

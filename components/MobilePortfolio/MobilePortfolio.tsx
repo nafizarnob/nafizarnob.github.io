@@ -7,6 +7,7 @@ import { projects } from '@/data/projects';
 const skills = {
   Domain: ['Fenergo CLM', 'AML / KYC', 'Financial Crime Compliance', 'Client Onboarding', 'Regulatory Compliance', 'Risk Assessment'],
   Engineering: ['Python', 'Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'PostgreSQL', 'Prisma', 'AWS', 'Azure'],
+  'AI Tools': ['GitHub Copilot', 'Copilot CLI', 'OpenAI Codex', 'Claude Code'],
 };
 
 const experience = [

@@ -253,17 +253,25 @@
   .project-tech { font-size: 7.8pt; color: var(--gray-4); text-align: right; }
   .project-desc { font-size: 8.5pt; color: var(--gray-2); grid-column: 1 / -1; }
 
-  /* ─── Print ─── */
+  /* ─── Page break controls ─── */
+  .header    { break-inside: avoid; }
+  .company-block { break-inside: avoid; }
+  .role-block    { break-inside: avoid; }
+  .edu-block     { break-inside: avoid; }
+  .project-row   { break-inside: avoid; }
+  .highlight     { break-inside: avoid; }
+  .section-label { break-after: avoid; }
+
   @media print {
     body { font-size: 9pt; }
-    .page { padding: 1.2cm 1.6cm; margin: 0; max-width: none; }
+    /* Let @page supply margins on every page — remove div padding */
+    .page { padding: 0; margin: 0; max-width: none; }
     a { color: inherit !important; }
-    .company-block { page-break-inside: avoid; }
   }
 
   @page {
     size: A4;
-    margin: 0;
+    margin: 1.4cm 1.8cm;
   }
 </style>
 </head>
@@ -404,9 +412,15 @@
         <span class="pill">PostgreSQL</span>
         <span class="pill">Prisma</span>
         <span class="pill">REST APIs</span>
-        <span class="pill">Claude AI</span>
         <span class="pill">Git</span>
         <span class="pill">Vercel</span>
+      </div>
+      <span class="skill-cat">AI Tools</span>
+      <div class="skill-pills">
+        <span class="pill featured">GitHub Copilot</span>
+        <span class="pill featured">Copilot CLI</span>
+        <span class="pill featured">OpenAI Codex</span>
+        <span class="pill">Claude Code</span>
       </div>
     </div>
   </section>

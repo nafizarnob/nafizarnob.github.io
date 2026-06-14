@@ -30,6 +30,7 @@ const COMMANDS: Record<string, string | string[]> = {
     'Backend   : Node.js · Python · Flask · PostgreSQL · Prisma',
     'Domain    : AML/KYC · CLM · Fenergo · Financial Crime',
     'Tools     : GitHub · Vercel · REST APIs · openpyxl',
+    'AI Tools  : GitHub Copilot · Copilot CLI · OpenAI Codex · Claude Code',
   ],
   projects: [
     '📁 Shopnopuri   — Next.js · TypeScript · i18n (github.com/nafizarnob/shopnopuri-website)',
