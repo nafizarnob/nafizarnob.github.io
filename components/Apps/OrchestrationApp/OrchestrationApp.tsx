@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { AppComponentProps } from '@/types';
 
 const C = { orch: '#D9A441', config: '#9B8CFF', entity: '#58C39A', gate: '#8b8b86' } as const;
@@ -327,15 +326,15 @@ function OrchestrationGraph({ focus, setFocus, hoverAgent, setHoverAgent }: {
           <div style={{ padding: '22px 28px 26px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', marginBottom: 18 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 13 }}>
-                <button onClick={() => setFocus(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: 'transparent', border: '1px solid rgba(232,230,225,0.16)', color: '#9b9b96', borderRadius: 8, padding: '7px 11px', fontSize: 12, cursor: 'pointer', fontFamily: "'JetBrains Mono',monospace" }}>← map</button>
+                <button type="button" onClick={() => setFocus(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: 'transparent', border: '1px solid rgba(232,230,225,0.16)', color: '#9b9b96', borderRadius: 8, padding: '7px 11px', fontSize: 12, cursor: 'pointer', fontFamily: "'JetBrains Mono',monospace" }}>← map</button>
                 <span style={{ width: 9, height: 9, borderRadius: '50%', background: fHue, boxShadow: `0 0 12px ${fHue}` }} />
                 <span style={{ fontSize: 16, fontWeight: 600 }}>{fAgent.name}</span>
                 <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: fHue, border: `1px solid ${fHue}44`, borderRadius: 5, padding: '2px 7px' }}>{fAgent.tag}</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontFamily: "'JetBrains Mono',monospace", fontSize: 12, color: '#8b8b86' }}>
-                <button onClick={() => setSel(s => (s - 1 + fAgent.steps.length) % fAgent.steps.length)} style={{ width: 26, height: 26, borderRadius: 7, border: '1px solid rgba(232,230,225,0.16)', background: 'transparent', color: '#c9c9c4', cursor: 'pointer' }}>‹</button>
+                <button type="button" onClick={() => setSel(s => (s - 1 + fAgent.steps.length) % fAgent.steps.length)} style={{ width: 26, height: 26, borderRadius: 7, border: '1px solid rgba(232,230,225,0.16)', background: 'transparent', color: '#c9c9c4', cursor: 'pointer' }}>‹</button>
                 <span>step {String(sel + 1).padStart(2, '0')} / {fAgent.steps.length}</span>
-                <button onClick={() => setSel(s => (s + 1) % fAgent.steps.length)} style={{ width: 26, height: 26, borderRadius: 7, border: '1px solid rgba(232,230,225,0.16)', background: 'transparent', color: '#c9c9c4', cursor: 'pointer' }}>›</button>
+                <button type="button" onClick={() => setSel(s => (s + 1) % fAgent.steps.length)} style={{ width: 26, height: 26, borderRadius: 7, border: '1px solid rgba(232,230,225,0.16)', background: 'transparent', color: '#c9c9c4', cursor: 'pointer' }}>›</button>
               </div>
             </div>
 
@@ -376,15 +375,18 @@ function OrchestrationGraph({ focus, setFocus, hoverAgent, setHoverAgent }: {
 function ExecutionSim() {
   const [run, setRun] = useState<{ active: boolean; done: boolean; step: number; logs: typeof LOGS_DATA }>({ active: false, done: false, step: -1, logs: [] });
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const activeRef = useRef(false);
 
   useEffect(() => () => { if (timerRef.current) clearTimeout(timerRef.current); }, []);
 
   const runPipeline = useCallback(() => {
-    if (run.active) return;
+    if (activeRef.current) return;
+    activeRef.current = true;
     setRun({ active: true, done: false, step: -1, logs: [] });
     let i = 0;
     const tick = () => {
       if (i >= LOGS_DATA.length) {
+        activeRef.current = false;
         setRun(st => ({ ...st, active: false, done: true }));
         return;
       }
@@ -393,10 +395,11 @@ function ExecutionSim() {
       timerRef.current = setTimeout(tick, i === 5 ? 950 : 640);
     };
     timerRef.current = setTimeout(tick, 320);
-  }, [run.active]);
+  }, []);
 
   const resetRun = useCallback(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
+    activeRef.current = false;
     setRun({ active: false, done: false, step: -1, logs: [] });
   }, []);
 
@@ -410,17 +413,17 @@ function ExecutionSim() {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', marginBottom: 24 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           {!run.active && !run.done && (
-            <button onClick={runPipeline} style={{ display: 'inline-flex', alignItems: 'center', gap: 9, background: '#e8e6e1', color: '#0c0c0f', border: 'none', borderRadius: 10, padding: '11px 18px', fontFamily: "'Geist',sans-serif", fontSize: 13.5, fontWeight: 600, cursor: 'pointer' }}>
+            <button type="button" onClick={runPipeline} style={{ display: 'inline-flex', alignItems: 'center', gap: 9, background: '#e8e6e1', color: '#0c0c0f', border: 'none', borderRadius: 10, padding: '11px 18px', fontFamily: "'Geist',sans-serif", fontSize: 13.5, fontWeight: 600, cursor: 'pointer' }}>
               Run requirement<span style={{ fontFamily: "'JetBrains Mono',monospace" }}>▸</span>
             </button>
           )}
           {run.active && (
-            <button disabled style={{ display: 'inline-flex', alignItems: 'center', gap: 9, background: '#1c1c22', color: '#9b9b96', border: '1px solid rgba(232,230,225,0.14)', borderRadius: 10, padding: '11px 18px', fontSize: 13.5, fontWeight: 600 }}>
+            <button type="button" disabled style={{ display: 'inline-flex', alignItems: 'center', gap: 9, background: '#1c1c22', color: '#9b9b96', border: '1px solid rgba(232,230,225,0.14)', borderRadius: 10, padding: '11px 18px', fontSize: 13.5, fontWeight: 600 }}>
               <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#58C39A', animation: 'livepulse 1s ease infinite' }} />Running…
             </button>
           )}
           {run.done && (
-            <button onClick={resetRun} style={{ background: 'transparent', color: '#9b9b96', border: '1px solid rgba(232,230,225,0.14)', borderRadius: 10, padding: '11px 16px', fontSize: 13, cursor: 'pointer' }}>Reset</button>
+            <button type="button" onClick={resetRun} style={{ background: 'transparent', color: '#9b9b96', border: '1px solid rgba(232,230,225,0.14)', borderRadius: 10, padding: '11px 16px', fontSize: 13, cursor: 'pointer' }}>Reset</button>
           )}
         </div>
         <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 11.5, color: '#8b8b86', display: 'flex', alignItems: 'center', gap: 8 }}>
