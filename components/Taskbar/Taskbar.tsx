@@ -15,7 +15,7 @@ const APP_ICONS: Record<AppType, string> = {
 
 interface TaskbarProps {
   windows: WindowState[];
-  onOpenApp: (app: AppType) => void;
+  onOpenApp: (app: AppType, appProps?: Record<string, string>) => void;
   onFocusWindow: (id: string) => void;
   onMinimizeWindow: (id: string) => void;
 }
@@ -53,17 +53,20 @@ export default function Taskbar({ windows, onOpenApp, onFocusWindow, onMinimizeW
           </div>
           <div className="p-2">
             {([
-              ['projects', 'Projects'],
-              ['about', 'About Me'],
-              ['terminal', 'Terminal'],
-              ['flappy', 'Flappy Bird'],
-            ] as [AppType, string][]).map(([app, label]) => (
+              ['projects', 'Projects', '📁', undefined],
+              ['about', 'About Me', '👤', undefined],
+              ['orchestration', 'AI Agents', '🤖', undefined],
+              ['browser', 'LinkedIn', '💼', { url: '/linkedin-profile.html', title: 'LinkedIn — Nafiz Arnob' }],
+              ['browser', 'Resume', '📄', { url: '/resume.html', title: 'Resume — Nafiz Arnob' }],
+              ['terminal', 'Terminal', '💻', undefined],
+              ['flappy', 'Flappy Bird', '🐦', undefined],
+            ] as [AppType, string, string, Record<string, string> | undefined][]).map(([app, label, icon, props]) => (
               <button
-                key={app}
+                key={label}
                 className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-200 hover:bg-white/5 transition-all"
-                onClick={() => { onOpenApp(app); setStartOpen(false); }}
+                onClick={() => { onOpenApp(app, props); setStartOpen(false); }}
               >
-                <span className="text-xl">{APP_ICONS[app]}</span>
+                <span className="text-xl">{icon}</span>
                 {label}
               </button>
             ))}

@@ -1,7 +1,7 @@
 'use client';
 
 import { Rnd } from 'react-rnd';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { WindowState, AppType, AppComponentProps } from '@/types';
 import ProjectsViewer from '@/components/Apps/ProjectsViewer/ProjectsViewer';
 import AboutApp from '@/components/Apps/AboutApp/AboutApp';
@@ -92,7 +92,6 @@ export default function Window({
   onOpenApp,
 }: WindowProps) {
   const AppComponent = APP_COMPONENTS[win.app];
-  if (win.isMinimized) return null;
 
   const glassStyle: React.CSSProperties = {
     background: win.isFocused ? 'rgba(15,16,28,0.88)' : 'rgba(12,13,22,0.82)',
@@ -106,77 +105,62 @@ export default function Window({
       : '0 16px 40px rgba(0,0,0,0.4)',
   };
 
-  const chrome = (
-    <div
-      className="flex flex-col h-full overflow-hidden"
+  // Single mounted tree: minimize hides via CSS and maximize reuses the same
+  // Rnd, so app state (terminal history, game progress) survives both.
+  return (
+    <motion.div
+      initial={{ scale: 0.9, opacity: 0, y: 16 }}
+      animate={{ scale: 1, opacity: 1, y: 0 }}
+      exit={{ scale: 0.9, opacity: 0, y: 16 }}
+      transition={{ duration: 0.18, ease: [0.34, 1.56, 0.64, 1] }}
       style={{
-        ...glassStyle,
-        borderRadius: win.isMaximized ? 0 : '12px',
-        transition: 'border-color 0.2s, box-shadow 0.2s',
+        position: 'absolute',
+        zIndex: win.zIndex,
+        inset: 0,
+        pointerEvents: 'none',
+        visibility: win.isMinimized ? 'hidden' : 'visible',
       }}
     >
-      <TitleBar
-        title={win.title}
-        onClose={() => onClose(win.id)}
-        onMinimize={() => onMinimize(win.id)}
-        onMaximize={() => onMaximize(win.id)}
-        isFocused={win.isFocused}
-      />
-      <div className="flex-1 overflow-auto" style={{ color: '#c0caf5' }}>
-        <AppComponent onOpenApp={onOpenApp} appProps={win.appProps} />
-      </div>
-    </div>
-  );
-
-  if (win.isMaximized) {
-    return (
-      <AnimatePresence>
-        <motion.div
-          key={win.id + '-max'}
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.97 }}
-          transition={{ duration: 0.18, ease: 'easeOut' }}
-          style={{ position: 'absolute', inset: 0, zIndex: win.zIndex }}
-          onMouseDown={() => onFocus(win.id)}
-        >
-          {chrome}
-        </motion.div>
-      </AnimatePresence>
-    );
-  }
-
-  return (
-    <AnimatePresence>
-      <motion.div
-        key={win.id}
-        initial={{ scale: 0.9, opacity: 0, y: 16 }}
-        animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={{ scale: 0.9, opacity: 0, y: 16 }}
-        transition={{ duration: 0.18, ease: [0.34, 1.56, 0.64, 1] }}
-        style={{ position: 'absolute', zIndex: win.zIndex, inset: 0, pointerEvents: 'none' }}
+      <Rnd
+        position={win.isMaximized ? { x: 0, y: 0 } : win.position}
+        size={win.isMaximized ? { width: '100%', height: '100%' } : win.size}
+        style={{ pointerEvents: 'all' }}
+        minWidth={400}
+        minHeight={300}
+        bounds="parent"
+        dragHandleClassName="window-titlebar"
+        disableDragging={win.isMaximized}
+        enableResizing={!win.isMaximized}
+        onMouseDown={() => requestAnimationFrame(() => onFocus(win.id))}
+        onDragStop={(_, d) => onPositionChange(win.id, { x: d.x, y: d.y })}
+        onResizeStop={(_, __, ref, ___, pos) => {
+          onSizeChange(win.id, {
+            width: parseInt(ref.style.width),
+            height: parseInt(ref.style.height),
+          });
+          onPositionChange(win.id, pos);
+        }}
       >
-        <Rnd
-          position={win.position}
-          size={win.size}
-          style={{ pointerEvents: 'all' }}
-          minWidth={400}
-          minHeight={300}
-          bounds="parent"
-          dragHandleClassName="window-titlebar"
-          onMouseDown={() => requestAnimationFrame(() => onFocus(win.id))}
-          onDragStop={(_, d) => onPositionChange(win.id, { x: d.x, y: d.y })}
-          onResizeStop={(_, __, ref, ___, pos) => {
-            onSizeChange(win.id, {
-              width: parseInt(ref.style.width),
-              height: parseInt(ref.style.height),
-            });
-            onPositionChange(win.id, pos);
+        <div
+          className="flex flex-col h-full overflow-hidden"
+          style={{
+            ...glassStyle,
+            borderRadius: win.isMaximized ? 0 : '12px',
+            transition: 'border-color 0.2s, box-shadow 0.2s',
           }}
         >
-          {chrome}
-        </Rnd>
-      </motion.div>
-    </AnimatePresence>
+          <TitleBar
+            title={win.title}
+            onClose={() => onClose(win.id)}
+            onMinimize={() => onMinimize(win.id)}
+            onMaximize={() => onMaximize(win.id)}
+            isFocused={win.isFocused}
+          />
+          <div className="flex-1 overflow-auto" style={{ color: '#c0caf5' }}>
+            <AppComponent onOpenApp={onOpenApp} appProps={win.appProps} />
+          </div>
+        </div>
+      </Rnd>
+    </motion.div>
   );
 }

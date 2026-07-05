@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { AppComponentProps } from '@/types';
 
 const highlights = [
-  { stat: '8', label: 'AI-powered tools built for Fenergo delivery', color: '#7aa2f7' },
+  { stat: '5', label: 'AI-powered delivery tools adopted org-wide at Fenergo', color: '#7aa2f7' },
   { stat: '27', label: 'Jurisdictions covered across Macquarie ICO', color: '#bb9af7' },
   { stat: '3+', label: 'Years implementing CLM for tier-1 banks', color: '#7dcfff' },
   { stat: '50+', label: 'Regulations handled across APAC programs', color: '#9ece6a' },
@@ -34,7 +34,7 @@ export default function AboutApp({ onOpenApp }: AppComponentProps) {
               style={{ border: '2px solid rgba(122,162,247,0.3)' }}
             />
             <div>
-              <h1 className="text-2xl font-bold text-white">Md Nafiz Arnob</h1>
+              <h1 className="text-2xl font-bold text-white">Nafiz Arnob</h1>
               <p className="text-blue-400 text-sm mt-0.5">Product Consultant & Developer</p>
               <p className="text-gray-500 text-xs mt-1">Sydney, NSW, Australia</p>
             </div>
@@ -42,7 +42,7 @@ export default function AboutApp({ onOpenApp }: AppComponentProps) {
 
           {/* Bio */}
           <p className="text-gray-300 leading-relaxed text-sm mb-6">
-            {"I'm a Product Consultant at Fenergo — I implement Client Lifecycle Management solutions for Australia's biggest banks. My day job is translating complex AML/KYC regulations into working platform configurations across multi-jurisdiction programs. But I don't just configure — I build. I've created a suite of 8 AI-powered tools that automate what used to take consultants weeks of manual work. Outside of Fenergo, I ship full-stack web apps and experiment with new tech."}
+            {"I'm a Product Consultant at Fenergo — I implement Client Lifecycle Management solutions for Australia's biggest banks. My day job is translating complex AML/KYC regulations into working platform configurations across multi-jurisdiction programs. But I don't just configure — I build. I've created a suite of AI-powered delivery tools, adopted org-wide across all Fenergo client engagements, that automate what used to take consultants weeks of manual work. Outside of work, I explore AI-enabled product development and ship my own web apps."}
           </p>
 
           {/* Impact highlights */}

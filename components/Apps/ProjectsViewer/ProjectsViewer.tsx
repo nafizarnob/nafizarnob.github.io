@@ -5,29 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '@/data/projects';
 import { Project, AppComponentProps } from '@/types';
 
-export default function ProjectsViewer({ onOpenApp }: AppComponentProps) {
-  const [selected, setSelected] = useState<Project | null>(null);
-  const [filter, setFilter] = useState<'all' | 'personal' | 'enterprise'>('all');
-  const [mobileView, setMobileView] = useState<'list' | 'detail'>('list');
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
-
-  const filtered = projects.filter((p) => filter === 'all' || p.category === filter);
-
-  const openInBrowser = (project: Project) => {
+function DetailPanel({ project, onOpenApp }: { project: Project; onOpenApp: AppComponentProps['onOpenApp'] }) {
+  const openInBrowser = () => {
     if (!project.websiteUrl) return;
     onOpenApp?.('browser', { url: project.websiteUrl, title: project.title });
   };
 
-  const handleSelect = (project: Project) => {
-    setSelected(project);
-    if (isMobile) setMobileView('detail');
-  };
-
-  const DetailPanel = ({ project }: { project: Project }) => (
+  return (
     <motion.div
       key={project.id}
       initial={{ opacity: 0, y: 8 }}
@@ -100,7 +84,7 @@ export default function ProjectsViewer({ onOpenApp }: AppComponentProps) {
         )}
         {project.websiteUrl && (
           <button
-            onClick={() => openInBrowser(project)}
+            onClick={openInBrowser}
             className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all"
             style={{ background: 'linear-gradient(135deg, #1d4ed8, #7c3aed)', color: 'white' }}
           >
@@ -133,6 +117,27 @@ export default function ProjectsViewer({ onOpenApp }: AppComponentProps) {
       </div>
     </motion.div>
   );
+}
+
+export default function ProjectsViewer({ onOpenApp }: AppComponentProps) {
+  const [selected, setSelected] = useState<Project | null>(null);
+  const [filter, setFilter] = useState<'all' | 'personal' | 'enterprise'>('all');
+  const [mobileView, setMobileView] = useState<'list' | 'detail'>('list');
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const update = () => setIsMobile(window.innerWidth < 768);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  const filtered = projects.filter((p) => filter === 'all' || p.category === filter);
+
+  const handleSelect = (project: Project) => {
+    setSelected(project);
+    if (isMobile) setMobileView('detail');
+  };
 
   // ── Mobile layout: single-column master/detail ──
   if (isMobile) {
@@ -195,7 +200,7 @@ export default function ProjectsViewer({ onOpenApp }: AppComponentProps) {
               >
                 ‹ Back to Projects
               </button>
-              {selected && <DetailPanel project={selected} />}
+              {selected && <DetailPanel project={selected} onOpenApp={onOpenApp} />}
             </motion.div>
           )}
         </AnimatePresence>
@@ -252,7 +257,7 @@ export default function ProjectsViewer({ onOpenApp }: AppComponentProps) {
       {/* Detail panel */}
       <div className="flex-1 overflow-y-auto">
         {selected ? (
-          <DetailPanel project={selected} />
+          <DetailPanel project={selected} onOpenApp={onOpenApp} />
         ) : (
           <div className="h-full flex flex-col items-center justify-center gap-3 text-center">
             <span className="text-5xl opacity-30">📁</span>

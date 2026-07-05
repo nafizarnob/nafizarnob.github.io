@@ -3,34 +3,46 @@
 import { useState, useRef } from 'react';
 import { AppComponentProps } from '@/types';
 
+// Sites that send X-Frame-Options / frame-ancestors and refuse to render in an
+// iframe. Frame refusal isn't detectable from JS (onLoad still fires and the
+// error page is cross-origin), so a known list is the only reliable signal.
+const FRAME_BLOCKED_HOSTS = [
+  'linkedin.com', 'google.com', 'facebook.com', 'instagram.com', 'x.com',
+  'twitter.com', 'github.com', 'youtube.com', 'reddit.com', 'anz.com.au',
+  'macquarie.com', 'fenergo.com',
+];
+
+function isFrameBlocked(target: string): boolean {
+  try {
+    const host = new URL(target).hostname.replace(/^www\./, '');
+    return FRAME_BLOCKED_HOSTS.some((b) => host === b || host.endsWith('.' + b));
+  } catch {
+    return false;
+  }
+}
+
 export default function BrowserApp({ appProps }: AppComponentProps) {
   const initialUrl = appProps?.url ?? 'https://example.com';
   const [url, setUrl] = useState(initialUrl);
   const [inputVal, setInputVal] = useState(initialUrl);
   const [loading, setLoading] = useState(true);
-  const [blocked, setBlocked] = useState(false);
+  const [blocked, setBlocked] = useState(() => isFrameBlocked(initialUrl));
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const navigate = (target: string) => {
     let normalized = target.trim();
-    if (normalized && !normalized.startsWith('http')) {
+    if (normalized && !normalized.startsWith('http') && !normalized.startsWith('/')) {
       normalized = 'https://' + normalized;
     }
     setUrl(normalized);
     setInputVal(normalized);
-    setLoading(true);
-    setBlocked(false);
+    const isBlocked = isFrameBlocked(normalized);
+    setBlocked(isBlocked);
+    setLoading(!isBlocked);
   };
 
   const handleLoad = () => {
     setLoading(false);
-    // Detect X-Frame-Options block: iframe loads but is blank/cross-origin
-    try {
-      // Will throw if cross-origin (expected). Won't throw only if same origin.
-      const _ = iframeRef.current?.contentDocument?.title;
-    } catch {
-      // Cross-origin: this is normal, not a block. Leave as-is.
-    }
   };
 
   const displayDomain = (() => {
@@ -56,7 +68,7 @@ export default function BrowserApp({ appProps }: AppComponentProps) {
           title="Forward"
         >→</button>
         <button
-          onClick={() => { setLoading(true); setBlocked(false); setUrl(u => u + ''); }}
+          onClick={() => navigate(url)}
           className="w-7 h-7 rounded-md flex items-center justify-center text-gray-500 hover:text-gray-300 hover:bg-white/5 transition-all text-sm"
           title="Reload"
         >↻</button>

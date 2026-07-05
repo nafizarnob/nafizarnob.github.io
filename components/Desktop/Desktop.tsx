@@ -38,6 +38,15 @@ const DESKTOP_ICON_SVG: Record<string, React.ReactNode> = {
       <path d="M14 16L18 19" stroke="#58C39A" strokeWidth="1" strokeDasharray="2 2"/>
     </svg>
   ),
+  resume: (
+    <svg width="26" height="30" viewBox="0 0 24 28" fill="none">
+      <path d="M3 3C3 1.9 3.9 1 5 1H15L21 7V25C21 26.1 20.1 27 19 27H5C3.9 27 3 26.1 3 25V3Z" fill="#f8fafc"/>
+      <path d="M15 1L21 7H16C15.45 7 15 6.55 15 6V1Z" fill="#fed7aa"/>
+      <rect x="6" y="11" width="12" height="1.6" rx="0.8" fill="#ea580c"/>
+      <rect x="6" y="15" width="12" height="1.6" rx="0.8" fill="#fdba74"/>
+      <rect x="6" y="19" width="8" height="1.6" rx="0.8" fill="#fdba74"/>
+    </svg>
+  ),
 };
 
 function IconContent({ icon }: { icon: DesktopIcon }) {
@@ -104,7 +113,16 @@ export default function Desktop({ onOpenApp }: DesktopProps) {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: i * 0.1 + 0.3 }}
-            className="flex flex-col items-center gap-1.5 cursor-pointer group w-20"
+            className="flex flex-col items-center gap-1.5 cursor-pointer group w-20 outline-none focus-visible:ring-2 focus-visible:ring-blue-400/70 rounded-xl"
+            role="button"
+            tabIndex={0}
+            aria-label={`Open ${icon.label}`}
+            onKeyDown={(e: React.KeyboardEvent) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onOpenApp(icon.app, icon.appProps);
+              }
+            }}
             onClick={(e) => {
               e.stopPropagation();
               const now = Date.now();

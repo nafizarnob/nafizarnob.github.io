@@ -2,11 +2,30 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nafizarnob.github.io"),
   title: "Nafiz Arnob — Portfolio OS",
-  description: "Product Consultant & Developer — AML/KYC, Next.js, TypeScript",
+  description:
+    "Product Consultant at Fenergo — AML/KYC & CLM for Australia's largest banks. Builder of AI-powered delivery tools adopted org-wide.",
   icons: {
     icon: "/favicon.png",
     apple: "/favicon.png",
+  },
+  openGraph: {
+    title: "Nafiz Arnob — Portfolio OS",
+    description:
+      "Product Consultant at Fenergo — AML/KYC & CLM for Australia's largest banks. Builder of AI-powered delivery tools adopted org-wide.",
+    url: "https://nafizarnob.github.io",
+    siteName: "Nafiz Arnob",
+    images: [{ url: "/linkedin-thumbnail.png", width: 1200, height: 628 }],
+    locale: "en_AU",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nafiz Arnob — Portfolio OS",
+    description:
+      "Product Consultant at Fenergo — AML/KYC & CLM for Australia's largest banks.",
+    images: ["/linkedin-thumbnail.png"],
   },
 };
 

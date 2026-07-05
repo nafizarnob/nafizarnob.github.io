@@ -10,7 +10,7 @@ import TerminalApp from '@/components/Apps/TerminalApp/TerminalApp';
 import BrowserApp from '@/components/Apps/BrowserApp/BrowserApp';
 import FlappyApp from '@/components/Apps/FlappyApp/FlappyApp';
 import OrchestrationApp from '@/components/Apps/OrchestrationApp/OrchestrationApp';
-import { AppType } from '@/types';
+import { AppType, AppComponentProps } from '@/types';
 
 // ── SVG Icons (cross-platform, no emoji rendering issues) ───────
 const FolderIcon = () => (
@@ -41,6 +41,16 @@ const BirdIcon = () => (
     <circle cx="17.5" cy="9.2" r="0.8" fill="#fff"/>
     <path d="M20 14C22 13 24 14 24 14L20 15Z" fill="#F97316"/>
     <path d="M8 18C10 22 18 22 20 18" stroke="#1a1a2e" strokeWidth="1" fill="none"/>
+  </svg>
+);
+
+const ResumeIcon = () => (
+  <svg width="26" height="28" viewBox="0 0 24 28" fill="none">
+    <path d="M3 3C3 1.9 3.9 1 5 1H15L21 7V25C21 26.1 20.1 27 19 27H5C3.9 27 3 26.1 3 25V3Z" fill="#fff"/>
+    <path d="M15 1L21 7H16C15.45 7 15 6.55 15 6V1Z" fill="#fed7aa"/>
+    <rect x="6" y="11" width="12" height="1.6" rx="0.8" fill="#ea580c"/>
+    <rect x="6" y="15" width="12" height="1.6" rx="0.8" fill="#fdba74"/>
+    <rect x="6" y="19" width="8" height="1.6" rx="0.8" fill="#fdba74"/>
   </svg>
 );
 
@@ -94,6 +104,14 @@ const APPS: MobileApp[] = [
     icon: <LinkedInIcon />,
   },
   {
+    id: 'resume',
+    label: 'Resume',
+    appType: 'browser',
+    appProps: { url: '/resume.html', title: 'Resume — Nafiz Arnob' },
+    gradient: 'linear-gradient(145deg, #7c2d12, #ea580c)',
+    icon: <ResumeIcon />,
+  },
+  {
     id: 'terminal',
     label: 'Terminal',
     appType: 'terminal',
@@ -118,7 +136,7 @@ const APPS: MobileApp[] = [
 
 const DOCK_IDS = ['projects', 'about', 'linkedin', 'flappy'];
 
-const APP_COMPONENTS: Record<AppType, React.ComponentType<any>> = {
+const APP_COMPONENTS: Record<AppType, React.ComponentType<AppComponentProps>> = {
   projects: ProjectsViewer,
   about: AboutApp,
   terminal: TerminalApp,
@@ -131,6 +149,7 @@ const APP_TITLE: Record<string, string> = {
   projects: 'Projects',
   about: 'About Me',
   linkedin: 'LinkedIn',
+  resume: 'Resume',
   terminal: 'Terminal',
   flappy: 'Flappy Bird',
   browser: 'Browser',
